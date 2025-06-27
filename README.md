@@ -22,13 +22,6 @@ Python Django Profile Site
 
 ---
 
-
-### 3. **GET /bookings?email=rahul@example.com**
-Fetches all bookings made by a specific client email.
-
-
----
-
 ## Key Features
 
 -  .....
