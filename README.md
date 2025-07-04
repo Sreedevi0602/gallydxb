@@ -76,7 +76,7 @@ python manage.py runserver
 
 ## Author
 
-**V S Sreedevi**  
-[GitHub: Sreedevi0602](https://github.com/Sreedevi0602)
+**Aurbiz & Beyond**  
+
 
 
