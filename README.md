@@ -50,6 +50,7 @@ myenv\Scripts\activate  # On Windows
 
 ```cmd
 pip install django
+pip install pillow
 ```
 
 ### Setup the database
