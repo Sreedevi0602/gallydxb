@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 from .utils.validators import validate_video_file_extension
 
 # Create your models here.
@@ -33,7 +34,7 @@ class BrandBanner(models.Model):
     )
 
     def __str__(self):
-        return self.heading1 or "Brand Banner"
+        return self.heading1 or "Our Brands Banner"
 
     def clean(self):
         super().clean()
@@ -46,3 +47,13 @@ class BrandBanner(models.Model):
         if not self.pk and BrandBanner.objects.exists():
             raise ValidationError("Only one BrandBanner instance is allowed. Please delete the existing one to add a new one.")
         super().save(*args, **kwargs)
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=500, null=True, blank=True)
+
+    logo = models.ImageField(upload_to='uploads/brand_logos/', blank=True, null=True)
+    
+
+    def __str__(self):
+        return self.name

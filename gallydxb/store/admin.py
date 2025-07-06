@@ -43,3 +43,19 @@ class BrandBannerAdmin(admin.ModelAdmin):
     media_preview.short_description = "Media Preview"
 
 admin.site.register(BrandBanner, BrandBannerAdmin)
+
+
+from .models import Brand
+
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['name', 'logo_preview']
+    readonly_fields = ['logo_preview']
+
+    def logo_preview(self, obj):
+        if obj.logo:
+            return format_html(f'<img src="{obj.logo.url}" style="max-height: 80px;" />')
+        return "No logo uploaded"
+
+    logo_preview.short_description = "Logo Preview"
+
+admin.site.register(Brand, BrandAdmin)
