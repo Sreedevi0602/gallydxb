@@ -103,3 +103,27 @@ class UpdateBanner1(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+
+
+class Product(models.Model):
+    code = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    name = models.CharField(max_length=300, null=True, blank=True)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.code} - {self.name}"
+
+
+
+class ProductMedia(models.Model):
+    product = models.ForeignKey(Product, related_name='media', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/products/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+    def __str__(self):
+        return f"Image for {self.product.name} - {self.product.name}"
