@@ -384,14 +384,16 @@ section
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1000;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Header on scroll */
 .header.header-scrolled {
-    background-color: #2f2f2f !important; 	/* #937c6f */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(47, 47, 47, 0.7) !important;  /* Semi-transparent background */
+    backdrop-filter: blur(10px) !important;             /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px) !important;     /* Safari support */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    z-index: 999 !important;
 }
 
 
