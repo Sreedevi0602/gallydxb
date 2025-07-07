@@ -45,7 +45,6 @@ class BrandBannerAdmin(admin.ModelAdmin):
 admin.site.register(BrandBanner, BrandBannerAdmin)
 
 
-from .models import Brand
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ['name', 'logo_preview']
@@ -59,3 +58,46 @@ class BrandAdmin(admin.ModelAdmin):
     logo_preview.short_description = "Logo Preview"
 
 admin.site.register(Brand, BrandAdmin)
+
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        elif obj.video:
+            return format_html(f'''
+                <video width="320" height="240" controls>
+                    <source src="{obj.video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            ''')
+        return "No media uploaded"
+
+    media_preview.short_description = "Media Preview"
+
+admin.site.register(Category, CategoryAdmin)
+
+
+class UpdateBanner1Admin(admin.ModelAdmin):
+    list_display = ['heading1', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        elif obj.video:
+            return format_html(f'''
+                <video width="320" height="240" controls>
+                    <source src="{obj.video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            ''')
+        return "No media uploaded"
+
+    media_preview.short_description = "Media Preview"
+
+admin.site.register(UpdateBanner1, UpdateBanner1Admin)

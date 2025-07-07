@@ -2,9 +2,7 @@
 {% load static %}
 {% block content %}
 
-<!-- Home -->
 
-<div class="home">
   <!-- Home Slider -->
   <div class="home_slider_container">
     <div class="owl-carousel owl-theme home_slider">
@@ -97,6 +95,92 @@
     </div>
   </div>
   {% endif %}
+
+
+  <!-- Shirts Category -->
+   {% if shirts %}
+  <div
+    class="brand_banner_container position-relative w-100"
+    style="width: 100%; height: 100%; object-fit: cover"
+  >
+    {% if shirts.image %}
+    <img
+      src="{{ shirts.image.url }}"
+      alt="Brand Banner"
+      class="img-fluid w-100 h-100 object-cover position-absolute top-0 start-0"
+    />
+    {% elif shirts.video %}
+    <video
+      autoplay
+      muted
+      loop
+      class="w-100 h-100 object-cover position-absolute top-0 start-0"
+    >
+      <source src="{{ shirts.video.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {% endif %}
+
+
+    <!-- Overlay: Heading -->
+    <div
+      class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center px-3"
+      style="background: rgba(0, 0, 0, 0.4)"
+    >
+      {% if shirts.name %}
+      <div class="home_slider_content">
+        <div class="home_slider_content_inner">
+          <div class="home_slider_title">{{ shirts.name }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      
+    </div>
+  </div>
+  {% endif %}
+
+
+  <!-- Updates Slider -->
+   
+	 <div class="home_slider_container">
+    <div class="owl-carousel owl-theme home_slider">
+      {% for update_slide in update_slides %}
+      <div class="owl-item">
+        {% if update_slide.image %}
+        <div
+          class="home_slider_background"
+          style="background-image: url('{{ update_slide.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
+        ></div>
+        {% elif update_slide.video %}
+        <video
+          class="home_slider_background"
+          autoplay
+          muted
+          loop
+          style="width: 100%; height: 100%; object-fit: cover"
+        >
+          <source src="{{ update_slide.video.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        <div class="home_slider_content">
+          <div class="home_slider_content_inner">
+            <div class="home_slider_title">{{ update_slide.heading1 }}</div>
+            <div class="home_slider_subtitle">{{ update_slide.description1 }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+
+
+
+
+    
 
   <!-- Promo -->
 
@@ -498,4 +582,4 @@
   </div>
 
   {% endblock %}
-</div>
+
