@@ -35,7 +35,7 @@ Python Django Profile Site
 
 ```cmd
 git clone https://github.com/YOUR_USERNAME/gallydxb.git
-cd halo
+cd gallydxb
 ```
 
 ### Create virtual environment
@@ -43,27 +43,19 @@ cd halo
 ```cmd
 pip install virtualenv
 virtualenv myenv
-myenv\Scripts\activate  # On Windows
+myenv\Scripts\activate  
 ```
 
 ### Install dependencies
 
 ```cmd
-pip install django
-pip install pillow
+pip install -r requirements.txt
 ```
 
 ### Setup the database
 
 ```cmd
-python manage.py makemigrations
 python manage.py migrate
-```
-
-### Create superuser (optional)
-
-```cmd
-python manage.py createsuperuser
 ```
 
 ### Run the server
