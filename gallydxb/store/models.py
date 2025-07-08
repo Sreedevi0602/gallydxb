@@ -80,10 +80,7 @@ class Category(models.Model):
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
 
-    def save(self, *args, **kwargs):
-        if not self.pk and Category.objects.exists():
-            raise ValidationError("Only one Category instance is allowed. Please delete the existing one to add a new one.")
-        super().save(*args, **kwargs)
+    
 
 
 class UpdateBanner1(models.Model):
@@ -127,3 +124,85 @@ class ProductMedia(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.name} - {self.product.name}"
+    
+
+
+class GallyGrid(models.Model):
+    image = models.ImageField(upload_to='uploads/gally/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+        if not self.pk and GallyGrid.objects.count() >= 6:
+            raise ValidationError("You can only add up to 6 images.")
+
+    def __str__(self):
+        return "New in Gally"
+    
+
+class Collection1(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    image1 = models.ImageField(upload_to='uploads/collection1/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='uploads/collection1/', blank=True, null=True)
+
+    def clean(self):
+        if not self.pk and Collection1.objects.exists():
+            raise ValidationError("Only one Collection instance is allowed.")
+        super().clean()
+
+    def __str__(self):
+        return f"{self.name} Collection" 
+    
+
+class UpdateBanner2(models.Model):
+    heading1 = models.CharField(max_length=100, null=True, blank=True)
+    description1 = models.TextField(max_length=500, null=True, blank=True)
+
+    image = models.ImageField(upload_to='uploads/update_banner2/images/', blank=True, null=True)
+    video = models.FileField(upload_to='uploads/update_banner2/videos/', blank=True, null=True, validators=[validate_video_file_extension])
+
+    def __str__(self):
+        return self.heading1
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        super().clean()
+        if not self.image and not self.video:
+            raise ValidationError("Please upload either an image or a video.")
+        if self.image and self.video:
+            raise ValidationError("Upload either an image or a video, not both.")
+        
+
+class LoopyGrid(models.Model):
+    image = models.ImageField(upload_to='uploads/loopy/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+        if not self.pk and LoopyGrid.objects.count() >= 6:
+            raise ValidationError("You can only add up to 6 images.")
+
+    def __str__(self):
+        return "New in Loopy"
+    
+
+class Collection2(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    image1 = models.ImageField(upload_to='uploads/collection2/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='uploads/collection2/', blank=True, null=True)
+
+    def clean(self):
+        if not self.pk and Collection2.objects.exists():
+            raise ValidationError("Only one Collection instance is allowed.")
+        super().clean()
+
+    def __str__(self):
+        return f"{self.name} Collection" 

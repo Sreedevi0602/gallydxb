@@ -686,7 +686,7 @@ section
 	z-index: 10;
 	border-radius: 50%;
 	cursor: pointer;
-	transition: all 200ms ease;
+	transition: all 1000ms ease;
 }
 
 .home_slider_next:hover {
@@ -887,6 +887,220 @@ section
 	margin-bottom: 67px;
 }
 
+/*********************************
+6. Gallt grid
+*********************************/
+
+.gally-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+
+    .gally-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 70%;
+    }
+
+    .gally-image-wrapper {
+      width: 100%;
+      height: 350px; 
+      overflow: hidden;
+    }
+
+    .gally-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gally-text {
+      padding-left: 40px;
+      text-align: left;
+      flex: 1;
+    }
+
+    .gally-text h2 {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: #000;
+      margin: 0;
+    }
+
+    .gally-text h2 span {
+      display: block;
+    }
+
+    .gally-text h2 span:last-child {
+      font-weight: 700;
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+      .gally-image-wrapper {
+        height: 250px;
+      }
+      .gally-text h2 {
+        font-size: 26px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+      .gally-image-wrapper {
+        height: 180px; /* Shorter image height on mobile */
+      }
+      .gally-text h2 {
+        font-size: 20px;
+      }
+      .gally-images {
+        gap: 15px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 575px) {
+      .gally-image-wrapper {
+        height: 140px;
+      }
+      .gally-text h2 {
+        font-size: 18px;
+      }
+    }
+
+
+/*********************************
+6. Collection 1
+*********************************/
+
+
+
+.collection1-container {
+    display: flex;
+    width: 100vw;
+    height: 130vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .collection1-left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    padding-left: 5vw; /* Adds space on the left */
+    box-sizing: border-box;
+  }
+
+  .collection1-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+
+  .collection1-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 5vw;
+    
+    color: #fff;
+    padding: 20px;
+    max-width: 80%;
+   
+  }
+
+  .collection1-overlay h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .collection1-overlay p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .collection1-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	
+  }
+
+  .collection1-right img {
+    width: 65%; /* Bigger than before */
+    height: auto;
+    max-height: 65%;
+    object-fit: cover;
+    
+    
+  }
+
+  /* Mobile layout */
+  @media (max-width: 768px) {
+    .collection1-container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .collection1-left {
+      width: 100%;
+      height: auto;
+      padding-left: 0;
+    }
+
+    .collection1-left img {
+      width: 100%;
+      height: auto;
+    }
+
+    .collection1-overlay {
+  position: absolute; /* changed from relative */
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 3; /* makes sure it sits on top of both images */
+  max-height: 100px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+
+    .collection1-right {
+      position: absolute;
+      top: 380px;
+      right: 20px;
+      width: 200%;
+      max-width: 200px;
+      height: 20%;
+	  margin-bottom: 20px;
+	  margin-right: 15px;
+    }
+
+    .collection1-right img {
+      width: 150%;
+      height: 150%;
+      max-height: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .collection1-overlay h2 {
+      font-size: 20px;
+    }
+
+    .collection1-overlay p {
+      font-size: 14px;
+    }
+  }
 /*********************************
 6. Promo
 *********************************/
