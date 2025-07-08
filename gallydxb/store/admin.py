@@ -2,6 +2,11 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import *
 
+admin.site.site_header = "Gally Admin Panel"
+admin.site.site_title = "Gally Admin"
+admin.site.index_title = "Welcome to Gally Admin Panel"
+
+
 # Register your models here.
 class HeroAdmin(admin.ModelAdmin):
     list_display = ['heading1', 'media_preview']
