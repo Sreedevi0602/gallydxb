@@ -34,3 +34,23 @@ def home(request):
         'loopy_grid': loopy_grid,
         'collection2_items': collection2_items,
         })
+
+
+
+def about(request):
+    return render(request, 'about.html', {})
+
+
+
+def products(request):
+    return render(request, 'products.html', {})
+
+
+
+def brand(request):
+    return render(request, 'brand.html', {})
+
+
+
+def category(request):
+    return render(request, 'category.html', {})
