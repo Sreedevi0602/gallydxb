@@ -249,3 +249,51 @@ class UpdateBanner3Admin(admin.ModelAdmin):
 
 admin.site.register(UpdateBanner3, UpdateBanner3Admin)
 
+
+
+class IrishclubGridAdmin(admin.ModelAdmin):
+    list_display = ['media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        return "No image uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(IrishclubGrid, IrishclubGridAdmin)
+
+
+class Collection3Admin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        previews = []
+        if obj.image1:
+            previews.append(f'<img src="{obj.image1.url}" style="max-width: 200px; margin-right: 10px;" />')
+        if obj.image2:
+            previews.append(f'<img src="{obj.image2.url}" style="max-width: 200px;" />')
+        if previews:
+            return format_html(''.join(previews))
+        return "No images uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(Collection3, Collection3Admin)
+
+
+
+class JackmillerGridAdmin(admin.ModelAdmin):
+    list_display = ['media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        return "No image uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(JackmillerGrid, JackmillerGridAdmin)

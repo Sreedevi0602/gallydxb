@@ -334,7 +334,7 @@
 
 
 
-<!-- collection1 -->
+<!-- collection2 -->
 
 {% for item in collection2_items %}
 <div class="collection1-container">
@@ -353,7 +353,166 @@
   </div>
 </div>
 {% endfor %}
+
+
+
+<!-- Denim Category -->
+   {% if denims %}
+  <div
+    class="brand_banner_container position-relative w-100"
+    style="width: 100%; height: 100%; object-fit: cover; margin-top: 65px;"
+  >
+    {% if denims.image %}
+    <img
+      src="{{ denims.image.url }}"
+      alt="Brand Banner"
+      class="img-fluid w-100 h-100 object-cover position-absolute top-0 start-0"
+    />
+    {% elif denims.video %}
+    <video
+      autoplay
+      muted
+      loop
+      class="w-100 h-100 object-cover position-absolute top-0 start-0"
+    >
+      <source src="{{ denims.video.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {% endif %}
+
+
+    <!-- Overlay: Heading -->
+    <div
+      class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center px-3"
+      style="background: rgba(0, 0, 0, 0.4)"
+    >
+      {% if denims.name %}
+      <div class="home_slider_content">
+        <div class="home_slider_content_inner">
+          <div class="home_slider_title">{{ denims.name }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      
+    </div>
+  </div>
+  {% endif %}
+
+
+
+  <!-- Irish Club Grid Section -->
+<div style="padding: 60px 5%; box-sizing: border-box;">
+  <div class="gally-section">
     
+    <!-- Left: Images Grid -->
+    <div class="gally-images">
+      {% for item in irishclub_grid|slice:":6" %}
+        <div class="gally-image-wrapper">
+          <img src="{{ item.image.url }}" alt="Loopy Grid Image" />
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right: Text -->
+    <div class="gally-text">
+      <h2>
+        <span style="font-weight: 400;">New</span>
+        <span>in</span>
+        <span style="font-weight: 700;">IRISH</span>
+        <span>CLUB</span>
+      </h2>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Updates Slider3 -->
+   
+	 <div class="home_slider_container">
+    <div class="owl-carousel owl-theme home_slider">
+      {% for update_slide in update3_slides %}
+      <div class="owl-item">
+        {% if update_slide.image %}
+        <div
+          class="home_slider_background"
+          style="background-image: url('{{ update_slide.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
+        ></div>
+        {% elif update_slide.video %}
+        <video
+          class="home_slider_background"
+          autoplay
+          muted
+          loop
+          style="width: 100%; height: 100%; object-fit: cover"
+        >
+          <source src="{{ update_slide.video.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        <div class="home_slider_content">
+          <div class="home_slider_content_inner">
+            <div class="home_slider_title">{{ update_slide.heading1 }}</div>
+            <div class="home_slider_subtitle">{{ update_slide.description1 }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+  <!-- collection3 -->
+
+{% for item in collection3_items %}
+<div class="collection1-container" style="margin-top: 70px;">
+  <!-- Left Image -->
+  <div class="collection1-left">
+    <img src="{{ item.image1.url }}" alt="{{ item.name }}">
+    <div class="collection1-overlay">
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+
+  <!-- Right Bigger Image -->
+  <div class="collection1-right">
+    <img src="{{ item.image2.url }}" alt="Side Image">
+  </div>
+</div>
+{% endfor %}
+    
+
+
+
+<!-- Jack Miller Grid Section -->
+<div style="padding: 60px 5%; box-sizing: border-box;">
+  <div class="gally-section">
+    
+    <!-- Left: Images Grid -->
+    <div class="gally-images">
+      {% for item in jackmiller_grid|slice:":6" %}
+        <div class="gally-image-wrapper">
+          <img src="{{ item.image.url }}" alt="Jack Miller Grid Image" />
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right: Text -->
+    <div class="gally-text">
+      <h2>
+        <span style="font-weight: 400;">New</span>
+        <span>in</span>
+        <span style="font-weight: 700;">JACK</span>
+        <span>MILLER</span>
+      </h2>
+    </div>
+
+  </div>
+</div>
+
 
   <!-- Promo -->
 

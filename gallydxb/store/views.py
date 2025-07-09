@@ -20,6 +20,14 @@ def home(request):
     update2_slides = UpdateBanner2.objects.all()
     loopy_grid = LoopyGrid.objects.all()
     collection2_items = Collection2.objects.all()
+    try:
+        denims = Category.objects.get(name__iexact='denim') 
+    except Category.DoesNotExist:
+        denims = None 
+    irishclub_grid = IrishclubGrid.objects.all()
+    update3_slides = UpdateBanner3.objects.all()
+    collection3_items = Collection3.objects.all()
+    jackmiller_grid = JackmillerGrid.objects.all()
 
     return render(request, 'home.html', {
         'hero_slides': hero_slides, 
@@ -33,6 +41,11 @@ def home(request):
         'update2_slides': update2_slides,
         'loopy_grid': loopy_grid,
         'collection2_items': collection2_items,
+        'denims': denims,
+        'irishclub_grid': irishclub_grid,
+        'update3_slides': update3_slides,
+        'collection3_items': collection3_items,
+        'jackmiller_grid': jackmiller_grid,
         })
 
 

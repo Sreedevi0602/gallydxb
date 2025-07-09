@@ -225,3 +225,51 @@ class UpdateBanner3(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+
+class IrishclubGrid(models.Model):
+    image = models.ImageField(upload_to='uploads/irishclub/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+        if not self.pk and IrishclubGrid.objects.count() >= 6:
+            raise ValidationError("You can only add up to 6 images.")
+
+    def __str__(self):
+        return "New in Irish Club"
+    
+
+
+class Collection3(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    image1 = models.ImageField(upload_to='uploads/collection3/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='uploads/collection3/', blank=True, null=True)
+
+    def clean(self):
+        if not self.pk and Collection3.objects.exists():
+            raise ValidationError("Only one Collection instance is allowed.")
+        super().clean()
+
+    def __str__(self):
+        return f"{self.name} Collection" 
+    
+
+class JackmillerGrid(models.Model):
+    image = models.ImageField(upload_to='uploads/jackmiller/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+        if not self.pk and JackmillerGrid.objects.count() >= 6:
+            raise ValidationError("You can only add up to 6 images.")
+
+    def __str__(self):
+        return "New in Jack Miller"
