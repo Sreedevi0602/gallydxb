@@ -34,7 +34,7 @@ Python Django Profile Site
 ### Clone the repository
 
 ```cmd
-git clone https://github.com/YOUR_USERNAME/gallydxb.git
+git clone https://github.com/Sreedevi0602/gallydxb.git
 cd gallydxb
 ```
 
@@ -49,6 +49,7 @@ myenv\Scripts\activate
 ### Install dependencies
 
 ```cmd
+cd gallydxb
 pip install -r requirements.txt
 ```
 
