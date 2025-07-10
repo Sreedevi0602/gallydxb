@@ -74,14 +74,14 @@
       style="background: rgba(0, 0, 0, 0.4)"
     >
       {% if brand_banner.heading1 %}
-      <div class="home_slider_content"> 
+      <div class="home_slider_content">
         <div class="home_slider_content_inner">
           <div class="home_slider_title">{{ brand_banner.heading1 }}</div>
         </div>
       </div>
       {% endif %}
 
-      <div class="brand-logos-grid">
+      <div class="brand-logos-container">
         {% for brand in brands %} {% if brand.logo %}
         <div class="brand-logo-wrapper">
           <img
@@ -91,7 +91,6 @@
           />
         </div>
         {% endif %} {% endfor %}
-        </div>
       </div>
     </div>
   </div>
