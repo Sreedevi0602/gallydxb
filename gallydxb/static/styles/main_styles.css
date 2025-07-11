@@ -793,6 +793,7 @@ section
 5. Menu
 *********************************/
 
+
 .menu
 {
 	position: fixed;
@@ -805,6 +806,7 @@ section
 	padding-right: 60px;
 	padding-top: 87px;
 	padding-left: 50px;
+	
 }
 .menu.active
 {
@@ -886,6 +888,32 @@ section
 	width: 100%;
 	margin-bottom: 67px;
 }
+
+
+/* By default, show header and hide burger_container */
+header.header {
+	display: flex;
+}
+.burger_container {
+	display: none !important;
+}
+
+/* On screens <= 991px (tablet & mobile), reverse visibility */
+@media (max-width: 991px) {
+	header.header {
+		display: none !important;
+	}
+	.burger_container {
+		display: flex !important;
+		opacity: 100 !important;
+		visibility: visible !important;
+		transform: none !important;
+		z-index: 1005;
+	}
+}
+
+
+
 
 /*********************************
 6. Gallt grid
