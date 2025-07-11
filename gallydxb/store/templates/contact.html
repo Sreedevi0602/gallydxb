@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<body>
+
+  <div class="contact-container">
+
+    <!-- LEFT BOX: FORM -->
+    <div class="contact-form">
+      <h2>Send Us A Message</h2>
+      <input type="email" placeholder="Your Email Address" required />
+      <textarea rows="6" placeholder="How Can We Help?" required></textarea>
+      <button type="submit">SUBMIT</button>
+    </div>
+
+    <!-- RIGHT BOX: CONTACT INFO -->
+    <div class="contact-info">
+      <div class="info-block">
+        <div class="info-title">
+          <span class="icon">📍</span>
+          <h2>Address</h2>
+        </div>
+        <p>Murshid Bazar,</p>
+        <p>Deira, Dubai - U.A.E Post box - 185120</p>
+      </div>
+
+      <div class="info-block">
+        <div class="info-title">
+          <span class="icon">📞</span>
+          <h2>Lets Talk</h2>
+        </div>
+        <p><a href="tel:+971 50 467 3470">+971 50 467 3470 </a></p>
+        <p><a href="tel:+971 52 452 0361">+971 52 452 0361 </a></p>
+      </div>
+
+      <div class="info-block">
+  <div class="info-title">
+    <span class="icon">💬</span> <!-- Or use 📱 if preferred -->
+    <h3>WhatsApp Us</h3>
+  </div>
+  <p><a href="https://wa.me/042323519" target="_blank">042323519</a></p>
+</div>
+
+      <div class="info-block">
+        <div class="info-title">
+          <span class="icon">✉️</span>
+          <h2>Sale Support</h2>
+        </div>
+        <p><a href="mailto:almustaqir@gmail.com">almustaqir@gmail.com</a></p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+{% endblock %}
