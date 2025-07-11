@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+   h1 {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .hero {
+    background: url("{% static 'images/home_slider_1.jpg' %}") no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+  }
+
+  .hero h1 {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .story {
+    padding: 4rem 2rem;
+    background: #fff;
+  }
+
+  .story .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .story .text {
+    flex: 1 1 500px;
+  }
+
+  .story .text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .story .text p {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .story .image {
+    flex: 1 1 400px;
+    text-align: center;
+  }
+
+  .story .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .vision-mission-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .vision-image {
+    flex: 1 1 400px;
+    max-width: 500px;
+    padding: 10px;
+  }
+
+  .vision-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .vision-text {
+    flex: 1 1 400px;
+    padding: 10px 30px;
+  }
+
+  .vision-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+
+  .vision-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .story .text h2,
+    .vision-text h2 {
+      font-size: 1.5rem;
+    }
+
+    .story,
+    .vision-mission-section {
+      padding: 2rem 1rem;
+      flex-direction: column;
+    }
+
+    .vision-text {
+      padding: 10px 0;
+    }
+  }
