@@ -68,3 +68,7 @@ def brand(request):
 
 def category(request):
     return render(request, 'category.html', {})
+
+
+def contact(request):
+    return render(request, 'contact.html', {})

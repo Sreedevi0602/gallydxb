@@ -2,40 +2,14 @@
 {% load static %}
 {% block content %}
 
-<!-- Home Slider -->
-  <div class="home_slider_container">
-    <div class="owl-carousel owl-theme home_slider">
-      {% for hero in hero_slides %}
-      <div class="owl-item">
-        {% if hero.image %}
-        <div
-          class="home_slider_background"
-          style="background-image: url('{{ hero.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
-        ></div>
-        {% elif hero.video %}
-        <video
-          class="home_slider_background"
-          autoplay
-          muted
-          loop
-          style="width: 100%; height: 100%; object-fit: cover"
-        >
-          <source src="{{ hero.video.url }}" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {% endif %}
-        <div class="home_slider_content">
-          <div class="home_slider_content_inner">
-            <div class="home_slider_title">{{ hero.heading1 }}</div>
-            <div class="home_slider_subtitle">{{ hero.description1 }}</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
 
 
-
+<!-- First Layer -->
+<section class="hero">
+  <div class="overlay">
+    <h1>About Us</h1>
+  </div>
+</section>
 
 <!-- Second Layer -->
 <section class="story">
@@ -54,7 +28,7 @@ Today, Gally Dubai serves the GCC and Africa, sourcing from factories in India, 
       </p>
     </div>
     <div class="image">
-      <img src="{% static 'images/gallery_1.jpg' %}" alt="Our Story Image" />
+      <img src="{% static 'images/about_2.jpeg' %}" alt="Our Story Image" />
     </div>
   </div>
 </section>
@@ -62,7 +36,7 @@ Today, Gally Dubai serves the GCC and Africa, sourcing from factories in India, 
 <!-- Third Layer -->
 <section class="vision-mission-section">
   <div class="vision-image">
-    <img src="{% static 'images/your_image_name.jpg' %}" alt="Fashion Model">
+    <img src="{% static 'images/about_1.png' %}" alt="Fashion Model">
   </div>
   <div class="vision-text">
     <h2>Our Vision</h2>
@@ -79,6 +53,3 @@ Today, Gally Dubai serves the GCC and Africa, sourcing from factories in India, 
 
 
 {% endblock %}
-
-
-
