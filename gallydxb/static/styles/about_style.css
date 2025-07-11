@@ -1,5 +1,31 @@
 @charset "utf-8";
 
+   .home_slider_content {
+    display: flex;
+    justify-content: flex-start;  /* Align to left */
+    align-items: flex-start;      /* Align vertically to top (optional) */
+    text-align: left;             /* Ensure left alignment for text */
+    padding-left: 60px;           /* Add some space from left edge */
+    height: 100%;                 /* Ensure full height to align properly */
+}
+
+.home_slider_content_inner {
+    max-width: 600px;             /* Optional: limit width */
+}
+
+.home_slider_title, .home_slider_subtitle {
+    background: none !important;  /* Remove any box backgrounds */
+    padding: 0;                   /* Remove any default padding */
+    margin: 0 0 10px 0;           /* Space between heading and subtitle */
+    color: white;                 /* Make sure text is visible */
+    
+}
+
+
+
+
+
+
    h1 {
     margin-top: 100px;
     text-align: center;

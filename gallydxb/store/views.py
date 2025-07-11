@@ -51,7 +51,8 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'about.html', {})
+    hero_slides = AboutHero.objects.all()
+    return render(request, 'about.html', {'hero_slides': hero_slides,})
 
 
 
