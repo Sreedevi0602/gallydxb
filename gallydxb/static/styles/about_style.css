@@ -88,8 +88,11 @@
 
   .story .image img {
     max-width: 100%;
+    max-height: 350px;
     height: auto;
+    width: auto;
     border-radius: 10px;
+    object-fit: contain;
   }
 
   .vision-mission-section {
@@ -110,9 +113,10 @@
 
   .vision-image img {
     width: 100%;
+    max-height: 350px;
     height: auto;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .vision-text {

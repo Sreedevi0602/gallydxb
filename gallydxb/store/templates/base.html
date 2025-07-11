@@ -17,6 +17,8 @@
 <link rel="stylesheet" type="text/css" href= "{% static 'styles/main_styles.css'  %}">
 <link rel="stylesheet" type="text/css" href=  "{% static 'styles/responsive.css' %}">
 <link rel="stylesheet" type="text/css" href=  "{% static 'styles/about_style.css' %}">
+<link rel="stylesheet" type="text/css" href=  "{% static 'styles/footer.css' %}">
+<link rel="stylesheet" type="text/css" href=  "{% static 'styles/contact_style.css' %}">
 
 
 
@@ -36,38 +38,71 @@
 {% endblock %}
 
 	
-	<!-- Footer -->
+	<!-- ✅ FOOTER SECTION -->
+<footer class="footer text-light pt-5" style="background-color: black;">
+  
+  <div class="container">
+    <div class="row">
+      <!-- Company Info -->
+      <div class="col-sm-6 col-lg-3 mb-4">
+        <h5 class="text-white">GALLY</h5>
+        <p class="small">
+          Gally is a leading manufacturer and exporter of high-quality men’s apparel, known for its strong roots in retail and wholesale. With operations across India, the Middle East, and Africa, we offer a diverse range of stylish and sustainable garments.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+      </div>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="footer_logo"><a href="#">Wish</a></div>
-					<nav class="footer_nav">
-						<ul>
-							<li><a href="index.html">home</a></li>
-							<li><a href="categories.html">clothes</a></li>
-							<li><a href="categories.html">accessories</a></li>
-							<li><a href="categories.html">lingerie</a></li>
-							<li><a href="contact.html">contact</a></li>
-						</ul>
-					</nav>
-					<div class="footer_social">
-						<ul>
-							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-				</div>
-			</div>
-		</div>
-	</footer>
+      <!-- Categories -->
+      <div class="col-sm-6 col-lg-3 mb-4">
+        <h5 class="text-white">QUICK LINKS</h5>
+        <ul class="list-unstyled small">
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">BRANDS</a></li>
+		   <li><a href="#">PRODUCTS</a></li>
+          <li><a href="#">COLLAB.</a></li>
+          <li><a href="#">STORE</a></li>
+		  <li><a href="#">GET IN TOUCH</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-sm-6 col-lg-3 mb-4">
+        <h5 class="text-white">GET IN TOUCH</h5>
+        <p class="small mb-1"><strong>ADDRESS:</strong>
+          Murshid Bazar,<br>
+          Deira,Dubai- U.A.E<br>
+          Post box - 185120
+        </p>
+        <p class="small mb-1"><strong>Call us on:</strong> +971 50 467 3470<br>+971 52 452 0361</p>
+		<p class="small mb-1"><strong>Whatsapp us on:</strong> 042323519 </p>
+        <p class="small mb-1"><strong>Email:</strong> almustaqir@gmail.com</p>
+        
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-sm-6 col-lg-3 mb-4">
+        <h5 class="text-white">NEWSLETTER</h5>
+        <form>
+          <div class="form-group">
+            <input type="email" class="form-control bg-transparent text-light border-secondary" placeholder="email@example.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+
+    <hr class="bg-secondary">
+
+    <div class="text-center pb-3 small text-muted">
+      &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved
+    </div>
+  </div>
+</footer>
     </div>
 
 

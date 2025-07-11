@@ -69,7 +69,5 @@ def brand(request):
 def category(request):
     return render(request, 'category.html', {})
 
-
-
 def collab(request):
     return render(request, 'collab.html', {})
