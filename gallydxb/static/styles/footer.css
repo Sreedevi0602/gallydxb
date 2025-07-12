@@ -3,6 +3,16 @@
 
 
     /* Footer Custom Styles */
+.footer-logo img{
+    height: 100px;
+  margin-bottom: 10px;
+  display: block; /* reduce space below the logo */
+}
+
+.footer-logo{
+  margin-bottom: 0; /* reduce vertical gap even further */
+}
+
     .footer a {
       text-decoration: none;
       color: #ccc;
@@ -10,7 +20,7 @@
     }
 
     .footer a:hover {
-      color: #fff;
+      color: #ffffff;
       text-decoration: underline;
     }
 
