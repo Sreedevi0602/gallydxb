@@ -3,8 +3,39 @@
 {% block content %}
 
 
+<!-- Contact Slider -->
+  <div class="home_slider_container" style="max-height: 80vh;">
+    <div class="owl-carousel owl-theme home_slider">
+      {% for hero in hero_slides %}
+      <div class="owl-item">
+        {% if hero.image %}
+        <div
+          class="home_slider_background"
+          style="background-image: url('{{ hero.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
+        ></div>
+        {% elif hero.video %}
+        <video
+          class="home_slider_background"
+          autoplay
+          muted
+          loop
+          style="width: 100%; height: 100%; object-fit: cover"
+        >
+          <source src="{{ hero.video.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        <div class="home_slider_content">
+          <div class="home_slider_content_inner">
+            <div class="home_slider_title">{{ hero.heading1 }}</div>
+            <div class="home_slider_subtitle">{{ hero.description1 }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
-<body>
+
 
   <div class="contact-container">
 
@@ -55,6 +86,5 @@
 
   </div>
 
-</body>
-</html>
+
 {% endblock %}

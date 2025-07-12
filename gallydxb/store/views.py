@@ -52,12 +52,14 @@ def home(request):
 
 def about(request):
     hero_slides = AboutHero.objects.all()
-    return render(request, 'about.html', {'hero_slides': hero_slides,})
+    return render(request, 'about.html', {'hero_slides': hero_slides})
 
 
 
 def products(request):
-    return render(request, 'products.html', {})
+    products = ProductMedia.objects.all()
+    hero_slides = ProductHero.objects.all()
+    return render(request, 'products.html', {'products': products, 'hero_slides': hero_slides,})
 
 
 
@@ -68,6 +70,14 @@ def brand(request):
 
 def category(request):
     return render(request, 'category.html', {})
+
+
+
+def contact(request):
+    hero_slides = ContactHero.objects.all()
+    return render(request, 'contact.html', {'hero_slides': hero_slides})
+
+
 
 def collab(request):
     return render(request, 'collab.html', {})

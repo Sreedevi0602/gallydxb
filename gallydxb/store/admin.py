@@ -318,3 +318,46 @@ class AboutHeroAdmin(admin.ModelAdmin):
     media_preview.short_description = "Media Preview"
 
 admin.site.register(AboutHero, AboutHeroAdmin)
+
+
+
+class ContactHeroAdmin(admin.ModelAdmin):
+    list_display = ['heading1', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        elif obj.video:
+            return format_html(f'''
+                <video width="320" height="240" controls>
+                    <source src="{obj.video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            ''')
+        return "No media uploaded"
+
+    media_preview.short_description = "Media Preview"
+
+admin.site.register(ContactHero, ContactHeroAdmin)
+
+
+class ProductHeroAdmin(admin.ModelAdmin):
+    list_display = ['heading1', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        elif obj.video:
+            return format_html(f'''
+                <video width="320" height="240" controls>
+                    <source src="{obj.video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            ''')
+        return "No media uploaded"
+
+    media_preview.short_description = "Media Preview"
+
+admin.site.register(ProductHero, ProductHeroAdmin)

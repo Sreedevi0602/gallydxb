@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}    
+
+
+<!-- Product Slider -->
+  <div class="home_slider_container" style="max-height: 80vh;">
+    <div class="owl-carousel owl-theme home_slider" style="margin-bottom: 70px;">
+      {% for hero in hero_slides %}
+      <div class="owl-item">
+        {% if hero.image %}
+        <div
+          class="home_slider_background"
+          style="background-image: url('{{ hero.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
+        ></div>
+        {% elif hero.video %}
+        <video
+          class="home_slider_background"
+          autoplay
+          muted
+          loop
+          style="width: 100%; height: 100%; object-fit: cover"
+        >
+          <source src="{{ hero.video.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        <div class="home_slider_content">
+          <div class="home_slider_content_inner">
+            <div class="home_slider_title">{{ hero.heading1 }}</div>
+            <div class="home_slider_subtitle">{{ hero.description1 }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+        
+        
+<div class="container mt-4">
+  <div class="row">
+    {% for product in products %}
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 text-center shadow-sm">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 400px; width: 100%; object-fit: cover;">
+          <div class="card-body p-2">
+            <h6 class="card-title mb-1" style="color: black;">{{ product.code }}</h6>
+            <p class="card-text text-muted small">{{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock %}

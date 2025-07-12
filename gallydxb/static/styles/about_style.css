@@ -43,7 +43,7 @@
   .hero .overlay {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 2rem 3rem;
-    border-radius: 10px;
+    
   }
 
   .hero h1 {
@@ -91,7 +91,6 @@
     max-height: 350px;
     height: auto;
     width: auto;
-    border-radius: 10px;
     object-fit: contain;
   }
 
