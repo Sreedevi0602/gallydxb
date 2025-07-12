@@ -893,7 +893,7 @@ header.header {
 	display: flex;
 }
 .burger_container {
-	display: none !important;
+	display: none ;
 }
 
 /* On screens <= 991px (tablet & mobile), reverse visibility */
@@ -903,10 +903,10 @@ header.header {
 	}
 	.burger_container {
 		display: flex !important;
-		opacity: 100 !important;
+		opacity: 101 !important;
 		visibility: visible !important;
 		transform: none !important;
-		z-index: 1005;
+		z-index: 1005 !important;
 	}
 }
 

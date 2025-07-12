@@ -11,29 +11,115 @@
 					<li><a href="{% url 'home' %}">HOME</a></li>
 					<li><a href="{% url 'about' %}">ABOUT</a></li>
 					<li><a href="#">BRANDS</a></li>
-					<li><a href="#">PRODUCTS</a></li>
+					<li><a href="{% url 'products' %}">PRODUCTS</a></li>
 					<li><a href="{% url 'collab' %}">COLLAB.</a></li>
 					<li><a href="#">STORE</a></li>
 					<li><a href="{% url 'contact' %}">GET IN TOUCH</a></li>
 				</ul>
 			</nav>
 
-			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+			
 		</div>
 	</header>
 
 	<!-- Menu -->
+	 <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="#">Wish</a></div>
+		<div class="logo"><a href="{% url 'home' %}">
+				<img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo">
+		</a></div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="#">home</a></li>
-				<li class="menu_mm"><a href="#">clothes</a></li>
-				<li class="menu_mm"><a href="#">accessories</a></li>
-				<li class="menu_mm"><a href="#">lingerie</a></li>
-				<li class="menu_mm"><a href="#">contact</a></li>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+					<li><a href="{% url 'about' %}">ABOUT</a></li>
+					<li><a href="#">BRANDS</a></li>
+					<li><a href="{% url 'products' %}">PRODUCTS</a></li>
+					<li><a href="{% url 'collab' %}">COLLAB.</a></li>
+					<li><a href="#">STORE</a></li>
+					<li><a href="{% url 'contact' %}">GET IN TOUCH</a></li>
 			</ul>
 		</nav>
 	</div>
+
+<style>
+/* === RESPONSIVE HEADER VISIBILITY === */
+
+/* Default (desktop): show header, hide burger */
+.header {
+	display: flex;
+}
+.burger_container {
+	display: none;
+}
+
+/* Mobile/tablet view: hide header, show burger */
+@media (max-width: 991px) {
+	.header {
+		display: none !important;
+	}
+
+	.burger_container {
+		display: flex !important;
+		position: fixed;
+		top: 30px;
+		right: 30px;
+		z-index: 1100;
+	}
+
+	/* When menu is open, hide burger */
+	body.menu-open .burger_container {
+		display: none !important;
+	}
+}
+
+/* === BURGER + MENU STYLE OVERRIDES === */
+
+/* White burger lines */
+.burger_container div {
+	background: #ffffff !important;
+}
+
+/* Menu background blur and transparency */
+.menu {
+	background: rgba(255, 255, 255, 0.05); /* slight white tint */
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* Safari */
+}
+
+/* Menu text color */
+.menu_nav ul li a {
+	color: white !important;
+}
+
+/* Close button lines */
+.menu_close div {
+	background: white !important;
+}
+
+body.menu-open {
+	overflow: hidden;
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const burger = document.querySelector('.burger_container');
+	const menu = document.querySelector('.menu');
+	const closeBtn = document.querySelector('.menu_close_container');
+
+	burger.addEventListener('click', () => {
+		menu.classList.add('active');
+		
+		document.body.classList.add('menu-open'); // disable scroll
+	});
+
+	closeBtn.addEventListener('click', () => {
+		menu.classList.remove('active');
+		burger.style.display = 'flex'; // show burger again
+		document.body.classList.remove('menu-open'); // re-enable scroll
+	});
+});
+</script>
