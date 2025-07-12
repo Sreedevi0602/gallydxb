@@ -80,6 +80,19 @@ class Category(models.Model):
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
 
+
+class Collection(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    image1 = models.ImageField(upload_to='uploads/collection/', blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
+    
+    def clean(self):
+        super().clean()
+        if not self.image1 :
+            raise ValidationError("Please upload either an image.")
     
 
 
@@ -107,6 +120,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.code} - {self.name}"
@@ -328,4 +342,6 @@ class ProductHero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+
+
 

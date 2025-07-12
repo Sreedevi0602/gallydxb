@@ -36,21 +36,108 @@
     </div>
         
         
-<div class="container mt-4" style="background-color: white;">
-  <div class="row">
+
+<style>
+  @media (max-width: 576px) {
+    .product-image {
+      height: 200px !important;
+    }
+  }
+
+  .product-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.brand-logo {
+  height: 45px;
+  width: auto;
+}
+
+.product-code {
+  font-weight: 200;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive logo sizing only */
+@media (max-width: 576px) {
+  .brand-logo {
+    height: 36px;
+  }
+
+  .product-code {
+    font-size: 8px;
+    font-weight: 100; 
+    color: #666;
+  }
+}
+
+.product-collection {
+
+  font-size: 17px; 
+  color: #222;
+
+}
+
+@media (max-width: 576px) {
+
+  .product-collection {
+
+  font-size: 12px; 
+  color: #222;
+
+}
+
+}
+
+
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
     {% for product in products %}
-      <div class="col-6 col-md-4 col-lg-3 mb-4">
-        <div class="card h-100 text-center shadow-sm">
-          <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 400px; width: 100%; object-fit: cover;">
-          <div class="card-body p-2">
-            <h6 class="card-title mb-1" style="color: black;">{{ product.code }}</h6>
-            <p class="card-text text-muted small">{{ product.price }}</p>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+        <div class="product-card" style="
+          background: #fff;
+          overflow: hidden;
+          width: 100%;
+          max-width: 320px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 16px;
+        ">
+          
+          <!-- Image -->
+          <div class="product-image" style="width: 100%; height: 280px; margin-bottom: 12px;">
+            <img src="{{ product.image.url }}" alt="{{ product.product.code }}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
+          
+        <div class="product-details d-flex align-items-start">
+  {% if product.product.brand.logo %}
+    <img src="{{ product.product.brand.logo.url }}" alt="{{ product.product.brand.name }}" class="brand-logo" style="height: 50px; width: 60px;">
+  {% endif %}
+  
+  <div class="product-texts" style="display: flex; flex-direction: column;">
+    <div class="product-code">
+      {{ product.product.code }}
+    </div>
+    <div class="product-collection">
+      {{ product.product.collection }}
+    </div>
+  </div>
+</div>
+
+
+
         </div>
       </div>
     {% endfor %}
   </div>
 </div>
+
 
 
 

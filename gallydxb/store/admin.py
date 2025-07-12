@@ -361,3 +361,20 @@ class ProductHeroAdmin(admin.ModelAdmin):
     media_preview.short_description = "Media Preview"
 
 admin.site.register(ProductHero, ProductHeroAdmin)
+
+
+class CollectionAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        previews = []
+        if obj.image1:
+            previews.append(f'<img src="{obj.image1.url}" style="max-width: 200px; margin-right: 10px;" />')
+        if previews:
+            return format_html(''.join(previews))
+        return "No images uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(Collection, CollectionAdmin)
