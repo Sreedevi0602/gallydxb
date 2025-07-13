@@ -13,7 +13,7 @@
       justify-content: center;
       gap: 30px;
       padding: 100px 20px 50px; /* Top padding added to avoid navbar overlap */
-      background-color: #a59e9e;
+      background-color: #ffffff;
     }
 
     /* LEFT SIDE: FORM */
@@ -24,7 +24,7 @@
       padding: 25px;
       border: 1px solid #ddd;
       border-radius: 10px;
-      background-color: #fff;
+      background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0,0,0,0.03);
     }
 
@@ -68,7 +68,7 @@
     }
 
     .info-block {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
     }
 
     .info-title {
