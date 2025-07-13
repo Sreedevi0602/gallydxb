@@ -46,8 +46,8 @@
     <div class="row">
       <!-- Company Info -->
       <div class="col-sm-6 col-lg-3 mb-4">
-        <div class="footer-logo">
-  <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo" >
+        <div class="footer-logo"><a href="{% url 'home' %}">
+  <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo" ></a>
 		</div>
         <p class="small">
           Gally is a leading manufacturer and exporter of high-quality men’s apparel, known for its strong roots in retail and wholesale. With operations across India, the Middle East, and Africa, we offer a diverse range of stylish and sustainable garments.
@@ -58,7 +58,8 @@
 		  <a href="https://www.tiktok.com/@1gally?_t=ZS-8xxk6MbkEPk&_r=1" target="_blank">
   <img src="{% static 'images/tiktok_logo.png' %}" alt="TikTok" style="height: 34px; ">
 </a>
-		   <a href="https://wa.me/042323519" target="_blank"><i class="fa fa-whatsapp"></i></a>
+		   <a href="https://wa.me/97142323519?text=Hi%2C%20I%E2%80%99m%20interested%20in%20your%20collections.%20Please%20share%20the%20details." target="_blank"><i class="fa fa-whatsapp"></i></a>
+
         </div>
       </div>
 
@@ -110,6 +111,22 @@
   </div>
 </footer>
     </div>
+
+
+<!-- WhatsApp Icon -->
+<a href="https://wa.me/97142323519?text=Hi%2C%20I%E2%80%99m%20interested%20in%20your%20collections.%20Please%20share%20the%20details." 
+   class="whatsapp-float" 
+   target="_blank" 
+   aria-label="Chat on WhatsApp">
+  <img src="{% static 'images/whatsapp_logo.svg' %}"
+       alt="WhatsApp Icon" 
+       class="whatsapp-icon">
+</a>
+
+
+
+
+
 
 
 <script src= "{% static 'js/jquery-3.2.1.min.js' %}"></script>

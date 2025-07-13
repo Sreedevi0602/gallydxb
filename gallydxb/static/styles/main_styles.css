@@ -50,6 +50,62 @@
 	src: url('../fonts/beyond_the_mountains.otf')  format('opentype'),
 		 url('../fonts/beyond_the_mountains.ttf')  format('truetype');
 }
+
+/*********************************
+2. WhatsApp Icon
+*********************************/
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 1000;
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+
+  .whatsapp-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.05);
+  }
+
+  /* Mobile (up to 768px) */
+  @media screen and (max-width: 768px) {
+    .whatsapp-float {
+      width: 60px;
+      height: 60px;
+    }
+
+    .whatsapp-icon {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  /* Tablets (769px to 1024px) */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .whatsapp-float {
+      width: 65px;
+      height: 65px;
+    }
+
+    .whatsapp-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+
 /*********************************
 2. Locations
 *********************************/
