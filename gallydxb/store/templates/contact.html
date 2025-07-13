@@ -3,39 +3,8 @@
 {% block content %}
 
 
-<!-- Contact Slider -->
-  <div class="home_slider_container" style="max-height: 80vh;">
-    <div class="owl-carousel owl-theme home_slider">
-      {% for hero in hero_slides %}
-      <div class="owl-item">
-        {% if hero.image %}
-        <div
-          class="home_slider_background"
-          style="background-image: url('{{ hero.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
-        ></div>
-        {% elif hero.video %}
-        <video
-          class="home_slider_background"
-          autoplay
-          muted
-          loop
-          style="width: 100%; height: 100%; object-fit: cover"
-        >
-          <source src="{{ hero.video.url }}" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {% endif %}
-        <div class="home_slider_content">
-          <div class="home_slider_content_inner">
-            <div class="home_slider_title">{{ hero.heading1 }}</div>
-            <div class="home_slider_subtitle">{{ hero.description1 }}</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
 
-
+<body>
 
   <div class="contact-container">
 
@@ -51,16 +20,16 @@
     <div class="contact-info">
       <div class="info-block">
         <div class="info-title">
-          <span class="icon">📍</span>
+          <p><i class="fa fa-map-marker location-icon" aria-hidden="true"></i></p>
           <h2>Address</h2>
         </div>
-        <p>Murshid Bazar,</p>
-        <p>Deira, Dubai - U.A.E Post box - 185120</p>
+        <strong><p>Murshid Bazar,</p>
+        <p>Deira, Dubai - U.A.E Post box - 185120</p></strong>
       </div>
 
       <div class="info-block">
         <div class="info-title">
-          <span class="icon">📞</span>
+          <p><i class="fa fa-phone call-icon" aria-hidden="true"></i></p>
           <h2>Lets Talk</h2>
         </div>
         <p><a href="tel:+971 50 467 3470">+971 50 467 3470 </a></p>
@@ -69,7 +38,7 @@
 
       <div class="info-block">
   <div class="info-title">
-    <span class="icon">💬</span> <!-- Or use 📱 if preferred -->
+    <a href="https://wa.me/042323519" target="_blank"><i class="fa fa-whatsapp"  style="font-size: 20px; color: #25D366;"></i></a>
     <h3>WhatsApp Us</h3>
   </div>
   <p><a href="https://wa.me/042323519" target="_blank">042323519</a></p>
@@ -77,7 +46,7 @@
 
       <div class="info-block">
         <div class="info-title">
-          <span class="icon">✉️</span>
+          <p><i class="fa fa-envelope email-icon" aria-hidden="true"></i></p>
           <h2>Sale Support</h2>
         </div>
         <p><a href="mailto:almustaqir@gmail.com">almustaqir@gmail.com</a></p>
@@ -86,5 +55,7 @@
 
   </div>
 
+</body>
+</html>
 
 {% endblock %}
