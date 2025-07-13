@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Store Slider -->
+  <div class="home_slider_container" style="max-height: 80vh;">
+    <div class="owl-carousel owl-theme home_slider">
+      {% for hero in hero_slides %}
+      <div class="owl-item">
+        {% if hero.image %}
+        <div
+          class="home_slider_background"
+          style="background-image: url('{{ hero.image.url }}'); width: 100%; height: 100%; object-fit: cover;"
+        ></div>
+        {% elif hero.video %}
+        <video
+          class="home_slider_background"
+          autoplay
+          muted
+          loop
+          style="width: 100%; height: 100%; object-fit: cover"
+        >
+          <source src="{{ hero.video.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        <div class="home_slider_content">
+          <div class="home_slider_content_inner">
+            <div class="home_slider_title">{{ hero.heading1 }}</div>
+            <div class="home_slider_subtitle">{{ hero.description1 }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+<!-- Second Layer -->
+<section class="story">
+  <div class="content">
+    <div class="text">
+      <h2>Our Story</h2>
+      <p>
+        Founded in 2000 in Calicut by four childhood friends with a shared love for fashion, Gally began as a retail store on SM Street. Their strong bond and fresh ideas quickly made waves in the local fashion scene. Inspired by travel and trends, they expanded into wholesale, leveraging direct ties with manufacturers in India and China.
+
+In 2008, they launched wholesale outlets in Calicut and Bangalore, each partner taking charge of key operations. By 2010, they set up their own production unit in Bangalore to support growing demand.
+      </p>
+      <p>
+       Seeking global reach, Gally entered the Dubai market in 2013, partnering with a local entrepreneur. With steady growth, they became a trusted name in men’s apparel wholesale across the Middle East by 2018.
+
+Today, Gally Dubai serves the GCC and Africa, sourcing from factories in India, China, and Turkey, and producing private label collections for global retailers.
+      </p>
+    </div>
+    <div class="image">
+      <img src="{% static 'images/about_2.jpeg' %}" alt="Our Story Image" />
+    </div>
+  </div>
+</section>
+
+<!-- Third Layer -->
+<section class="vision-mission-section">
+  <div class="vision-image">
+    <img src="{% static 'images/about_1.png' %}" alt="Fashion Model">
+  </div>
+  <div class="vision-text">
+    <h2>Our Vision</h2>
+    <p>
+      To become a leading apparel wholesaler in the industry, renowned for providing high-quality, trendy, and affordable clothing to retailers and customers worldwide.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+      Gally is committed to delivering trendy apparel, fostering strong partnerships, and continuously innovating to stay ahead. We prioritize customer satisfaction through timely service and uphold sustainability and ethical practices in all we do.
+    </p>
+  </div>
+</section>
+
+
+{% endblock %}

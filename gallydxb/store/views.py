@@ -123,10 +123,12 @@ def contact(request):
 
 
 def collab(request):
-    return render(request, 'collab.html', {})
+    hero_slides = CollabHero.objects.all()
+    return render(request, 'collab.html', {'hero_slides': hero_slides})
 
 
 
 def store(request):
+    hero_slides = StoreHero.objects.all()
     stores = Store.objects.all()
-    return render(request, 'store.html', {'stores': stores})
+    return render(request, 'store.html', {'hero_slides': hero_slides,'stores': stores})
