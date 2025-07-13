@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 
 # Create your views here.
@@ -12,6 +12,10 @@ def home(request):
         shirts = None 
     update_slides = UpdateBanner1.objects.all()
     gally_grid = GallyGrid.objects.all()
+    try:
+        gally = Brand.objects.get(name__iexact='gally')
+    except Brand.DoesNotExist:
+        gally = None
     collection1_items = Collection1.objects.all()
     try:
         tshirts = Category.objects.get(name__iexact='t-shirts') 
@@ -19,15 +23,38 @@ def home(request):
         tshirts = None 
     update2_slides = UpdateBanner2.objects.all()
     loopy_grid = LoopyGrid.objects.all()
+    try:
+        loopy = Brand.objects.get(name__iexact='loopy')
+    except Brand.DoesNotExist:
+        loopy = None
     collection2_items = Collection2.objects.all()
     try:
         denims = Category.objects.get(name__iexact='denim') 
     except Category.DoesNotExist:
         denims = None 
     irishclub_grid = IrishclubGrid.objects.all()
+    try:
+        irishclub = Brand.objects.get(name__iexact='Irish Club')
+    except Brand.DoesNotExist:
+        irishclub = None
     update3_slides = UpdateBanner3.objects.all()
     collection3_items = Collection3.objects.all()
     jackmiller_grid = JackmillerGrid.objects.all()
+    try:
+        jackmiller = Brand.objects.get(name__iexact='Jack Miller')
+    except Brand.DoesNotExist:
+        jackmiller = None
+    try:
+        hoodie = Category.objects.get(name__iexact='hoodie') 
+    except Category.DoesNotExist:
+        hoodie = None
+    collection4_items = Collection4.objects.all()
+    district_grid = DistrictGrid.objects.all()
+    try:
+        district11 = Brand.objects.get(name__iexact='District 11')
+    except Brand.DoesNotExist:
+        district11 = None
+    stores = Store.objects.all()
 
     return render(request, 'home.html', {
         'hero_slides': hero_slides, 
@@ -36,16 +63,25 @@ def home(request):
         'shirts': shirts, 
         'update_slides': update_slides,
         'gally_grid': gally_grid,
+        'gally': gally,
         'collection1_items': collection1_items,
         'tshirts': tshirts,
         'update2_slides': update2_slides,
         'loopy_grid': loopy_grid,
+        'loopy': loopy,
         'collection2_items': collection2_items,
         'denims': denims,
         'irishclub_grid': irishclub_grid,
+        'irishclub': irishclub,
         'update3_slides': update3_slides,
         'collection3_items': collection3_items,
         'jackmiller_grid': jackmiller_grid,
+        'jackmiller': jackmiller,
+        'hoodie': hoodie,
+        'collection4_items': collection4_items,
+        'district_grid': district_grid,
+        'district11': district11,
+        'stores': stores,
         })
 
 
@@ -63,13 +99,20 @@ def products(request):
 
 
 
-def brand(request):
-    return render(request, 'brand.html', {})
+def brand(request, slug):
+    brand = get_object_or_404(Brand, slug=slug)
+    products = Product.objects.filter(brand=brand)
+    return render(request, 'brand.html', {
+        'brand': brand,
+        'products': products
+    })
 
 
 
-def category(request):
-    return render(request, 'category.html', {})
+def category(request,slug):
+    category = get_object_or_404(Category, slug=slug)
+    products = Product.objects.filter(category=category)
+    return render(request, 'category.html', {'category': category, 'products': products})
 
 
 
@@ -81,3 +124,9 @@ def contact(request):
 
 def collab(request):
     return render(request, 'collab.html', {})
+
+
+
+def store(request):
+    stores = Store.objects.all()
+    return render(request, 'store.html', {'stores': stores})

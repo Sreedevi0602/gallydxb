@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ValidationError
 from .utils.validators import validate_video_file_extension
+from django.utils.text import slugify
 
 # Create your models here.
 class Hero(models.Model):
@@ -51,9 +52,15 @@ class BrandBanner(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=500, null=True, blank=True)
-
+    slug = models.SlugField(unique=True, blank=True, null=True)
     logo = models.ImageField(upload_to='uploads/brand_logos/', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/brand_banner/', blank=True, null=True)
     
+
+    def save(self, *args, **kwargs):
+        if self.name and not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -62,6 +69,7 @@ class Brand(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     image = models.ImageField(upload_to='uploads/categories/images/', blank=True, null=True)
     video = models.FileField(
         upload_to='uploads/categories/videos/',
@@ -73,6 +81,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+    def save(self, *args, **kwargs):
+        if self.name and not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+    
     def clean(self):
         super().clean()
         if not self.image and not self.video:
@@ -81,7 +94,7 @@ class Category(models.Model):
             raise ValidationError("Upload either an image or a video, not both.")
 
 
-class Collection(models.Model):
+class Collections(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     image1 = models.ImageField(upload_to='uploads/collection/', blank=True, null=True)
@@ -120,7 +133,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
+    collection = models.ForeignKey(Collections, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.code} - {self.name}"
@@ -342,6 +355,58 @@ class ProductHero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+
+class Collection4(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    image1 = models.ImageField(upload_to='uploads/collection4/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='uploads/collection4/', blank=True, null=True)
+
+    def clean(self):
+        if not self.pk and Collection4.objects.exists():
+            raise ValidationError("Only one Collection instance is allowed.")
+        super().clean()
+
+    def __str__(self):
+        return f"{self.name} Collection" 
+        
+
+class DistrictGrid(models.Model):
+    image = models.ImageField(upload_to='uploads/district_11/images/', blank=True, null=True)
+
+    def clean(self):
+        super().clean()
+
+        if not self.image:
+            raise ValidationError("Please upload an image.")
+
+        if not self.pk and DistrictGrid.objects.count() >= 6:
+            raise ValidationError("You can only add up to 6 images.")
+
+    def __str__(self):
+        return "New in District 11"
+    
+
+
+class Store(models.Model):
+    location = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ImageField(upload_to='uploads/store/images/', blank=True, null=True)
+    video = models.FileField(upload_to='uploads/store/videos/', blank=True, null=True, validators=[validate_video_file_extension])
+
+    def __str__(self):
+        return self.location
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        super().clean()
+        if not self.image and not self.video:
+            raise ValidationError("Please upload either an image or a video.")
+        if self.image and self.video:
+            raise ValidationError("Upload either an image or a video, not both.")
+    
+
+
 
 
 

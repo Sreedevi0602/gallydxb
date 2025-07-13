@@ -52,15 +52,21 @@ admin.site.register(BrandBanner, BrandBannerAdmin)
 
 
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ['name', 'logo_preview']
-    readonly_fields = ['logo_preview']
+    list_display = ['name', 'logo_preview', 'image_preview']
+    readonly_fields = ['logo_preview', 'image_preview']
 
     def logo_preview(self, obj):
         if obj.logo:
             return format_html(f'<img src="{obj.logo.url}" style="max-height: 80px;" />')
         return "No logo uploaded"
+    
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-height: 80px;" />')
+        return "No Banner uploaded"
 
     logo_preview.short_description = "Logo Preview"
+    image_preview.short_description = "Banner Preview"
 
 admin.site.register(Brand, BrandAdmin)
 
@@ -363,7 +369,7 @@ class ProductHeroAdmin(admin.ModelAdmin):
 admin.site.register(ProductHero, ProductHeroAdmin)
 
 
-class CollectionAdmin(admin.ModelAdmin):
+class CollectionsAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'media_preview']
     readonly_fields = ['media_preview']
 
@@ -377,4 +383,58 @@ class CollectionAdmin(admin.ModelAdmin):
 
     media_preview.short_description = "Image Preview"
 
-admin.site.register(Collection, CollectionAdmin)
+admin.site.register(Collections, CollectionsAdmin)
+
+
+class Collection4Admin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        previews = []
+        if obj.image1:
+            previews.append(f'<img src="{obj.image1.url}" style="max-width: 200px; margin-right: 10px;" />')
+        if obj.image2:
+            previews.append(f'<img src="{obj.image2.url}" style="max-width: 200px;" />')
+        if previews:
+            return format_html(''.join(previews))
+        return "No images uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(Collection4, Collection4Admin)
+
+
+class DistrictGridAdmin(admin.ModelAdmin):
+    list_display = ['media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        return "No image uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(DistrictGrid, DistrictGridAdmin)
+
+
+class StoreAdmin(admin.ModelAdmin):
+    list_display = ['location', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" style="max-width: 300px; max-height: 200px;" />')
+        elif obj.video:
+            return format_html(f'''
+                <video width="320" height="240" controls>
+                    <source src="{obj.video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            ''')
+        return "No media uploaded"
+
+    media_preview.short_description = "Media Preview"
+
+admin.site.register(Store, StoreAdmin)

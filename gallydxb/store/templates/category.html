@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}    
+
+<style>
+  @media (max-width: 576px) {
+    .product-image {
+      height: 200px !important;
+    }
+  }
+
+  .product-details {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .brand-logo {
+    height: 45px;
+    width: auto;
+  }
+
+  .product-code {
+    font-weight: 200;
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (max-width: 576px) {
+    .brand-logo {
+      height: 36px;
+    }
+
+    .product-code {
+      font-size: 8px;
+      font-weight: 100; 
+      color: #666;
+    }
+  }
+
+  .product-collection {
+    font-size: 17px; 
+    color: #222;
+  }
+
+  @media (max-width: 576px) {
+    .product-collection {
+      font-size: 12px; 
+      color: #222;
+    }
+  }
+</style>
+
+
+{% if category %}
+  <div
+    class="brand_banner_container position-relative w-100"
+    style="width: 100%; height: 80%; object-fit: cover; margin-bottom: 50px;"
+  >
+    {% if category.image %}
+    <img
+      src="{{ category.image.url }}"
+      alt="Category Banner"
+      class="img-fluid w-100 h-100 object-cover position-absolute top-0 start-0"
+    />
+    {% elif category.video %}
+    <video
+      autoplay
+      muted
+      loop
+      class="w-100 h-100 object-cover position-absolute top-0 start-0"
+    >
+      <source src="{{ category.video.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {% endif %}
+
+    <!-- Overlay: Heading -->
+    <div
+      class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center px-3"
+      style="background: rgba(0, 0, 0, 0.4)"
+    >
+      {% if category.name %}
+      <div class="home_slider_content">
+        <div class="home_slider_content_inner">
+          <div class="home_slider_title">{{ category.name }}</div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    {% for product in products %}
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+        <div class="product-card" style="
+          background: #fff;
+          overflow: hidden;
+          width: 100%;
+          max-width: 320px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 16px;
+        ">
+          
+          <!-- Image -->
+          <div class="product-image" style="width: 100%; height: 280px; margin-bottom: 12px;">
+            {% if product.media.all %}
+              <img src="{{ product.media.all.0.image.url }}" alt="{{ product.code }}" style="width: 100%; height: 100%; object-fit: cover;">
+            {% else %}
+              <div style="width: 100%; height: 100%; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                <span>No image</span>
+              </div>
+            {% endif %}
+          </div>
+          
+          <div class="product-details d-flex align-items-start">
+            {% if product.brand.logo %}
+              <img src="{{ product.brand.logo.url }}" alt="{{ product.brand.name }}" class="brand-logo" style="height: 50px; width: 60px;">
+            {% endif %}
+            
+            <div class="product-texts" style="display: flex; flex-direction: column;">
+              <div class="product-code">
+                {{ product.code }}
+              </div>
+              <div class="product-collection">
+                {{ product.collection }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

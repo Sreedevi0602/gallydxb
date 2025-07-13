@@ -81,17 +81,19 @@
       </div>
       {% endif %}
 
-      <div class="brand-logos-container">
-        {% for brand in brands %} {% if brand.logo %}
-        <div class="brand-logo-wrapper">
-          <img
-            src="{{ brand.logo.url }}"
-            alt="{{ brand.name }}"
-            class="brand-logo-img"
-          />
-        </div>
-        {% endif %} {% endfor %}
-      </div>
+      <div class="brand-logos-container d-flex flex-wrap gap-3 justify-content-center">
+  {% for brand in brands %}
+    {% if brand.logo and brand.slug %}
+      <a href="{% url 'brand' slug=brand.slug %}" class="brand-logo-wrapper text-decoration-none" style="display: inline-block; max-width: 140px;">
+        <img src="{{ brand.logo.url }}" alt="{{ brand.name }}"
+             class="img-fluid w-100 h-auto object-fit-contain" style="max-height: 80px;" />
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+
     </div>
   </div>
   {% endif %}
@@ -99,6 +101,7 @@
 
   <!-- Shirts Category -->
    {% if shirts %}
+   <a href="{% url 'category' slug=shirts.slug %}" class="text-decoration-none text-reset">
   <div
     class="brand_banner_container position-relative w-100"
     style="width: 100%; height: 100%; object-fit: cover"
@@ -138,6 +141,7 @@
       
     </div>
   </div>
+   </a>
   {% endif %}
 
 
@@ -178,6 +182,9 @@
 
 
    <!-- Gally Grid Section -->
+
+<a href="{% url 'brand' slug=gally.slug %}" class="text-decoration-none text-reset">
+
 <div style="padding: 60px 5%; box-sizing: border-box;">
   <div class="gally-section">
     
@@ -201,6 +208,7 @@
 
   </div>
 </div>
+  </a>
 
 
 
@@ -229,6 +237,7 @@
 
 <!-- TShirts Category -->
    {% if tshirts %}
+   <a href="{% url 'category' slug=tshirts.slug %}" class="text-decoration-none text-reset">
   <div
     class="brand_banner_container position-relative w-100"
     style="width: 100%; height: 100%; object-fit: cover; margin-top: 65px;"
@@ -268,6 +277,7 @@
       
     </div>
   </div>
+   </a>
   {% endif %}
 
 
@@ -308,6 +318,7 @@
 
 
 <!-- Loopy Grid Section -->
+ <a href="{% url 'brand' slug=loopy.slug %}" class="text-decoration-none text-reset">
 <div style="padding: 60px 5%; box-sizing: border-box;">
   <div class="gally-section">
     
@@ -331,7 +342,7 @@
 
   </div>
 </div>
-
+ </a>
 
 
 <!-- collection2 -->
@@ -358,6 +369,7 @@
 
 <!-- Denim Category -->
    {% if denims %}
+   <a href="{% url 'category' slug=denims.slug %}" class="text-decoration-none text-reset">
   <div
     class="brand_banner_container position-relative w-100"
     style="width: 100%; height: 100%; object-fit: cover; margin-top: 65px;"
@@ -397,11 +409,13 @@
       
     </div>
   </div>
+  </a>
   {% endif %}
 
 
 
   <!-- Irish Club Grid Section -->
+<a href="{% url 'brand' slug=irishclub.slug %}" class="text-decoration-none text-reset">
 <div style="padding: 60px 5%; box-sizing: border-box;">
   <div class="gally-section">
     
@@ -426,7 +440,7 @@
 
   </div>
 </div>
-
+</a>
 
 
 <!-- Updates Slider3 -->
@@ -488,6 +502,7 @@
 
 
 <!-- Jack Miller Grid Section -->
+<a href="{% url 'brand' slug=jackmiller.slug %}" class="text-decoration-none text-reset">
 <div style="padding: 60px 5%; box-sizing: border-box;">
   <div class="gally-section">
     
@@ -512,336 +527,157 @@
 
   </div>
 </div>
+</a>
 
 
-  <!-- Promo -->
 
-  <div class="promo">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="section_title_container text-center">
-            <div class="section_subtitle">only the best</div>
-            <div class="section_title">promo prices</div>
-          </div>
-        </div>
-      </div>
-      <div class="row promo_container">
-        <!-- Promo Item -->
-        <div class="col-lg-4 promo_col">
-          <div class="promo_item">
-            <div class="promo_image">
-              <img src="images/promo_1.jpg" alt="" />
-              <div class="promo_content promo_content_1">
-                <div class="promo_title">-30% off</div>
-                <div class="promo_subtitle">on all bags</div>
-              </div>
-            </div>
-            <div class="promo_link"><a href="#">Shop Now</a></div>
-          </div>
-        </div>
+<!-- hoodie Category -->
+   {% if hoodie %}
+   <a href="{% url 'category' slug=hoodie.slug %}" class="text-decoration-none text-reset">
+  <div
+    class="brand_banner_container position-relative w-100"
+    style="width: 100%; height: 100%; object-fit: cover; margin-top: 65px;"
+  >
+    {% if hoodie.image %}
+    <img
+      src="{{ hoodie.image.url }}"
+      alt="Brand Banner"
+      class="img-fluid w-100 h-100 object-cover position-absolute top-0 start-0"
+    />
+    {% elif hoodie.video %}
+    <video
+      autoplay
+      muted
+      loop
+      class="w-100 h-100 object-cover position-absolute top-0 start-0"
+    >
+      <source src="{{ hoodie.video.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {% endif %}
 
-        <!-- Promo Item -->
-        <div class="col-lg-4 promo_col">
-          <div class="promo_item">
-            <div class="promo_image">
-              <img src="images/promo_2.jpg" alt="" />
-              <div class="promo_content promo_content_2">
-                <div class="promo_title">-30% off</div>
-                <div class="promo_subtitle">coats & jackets</div>
-              </div>
-            </div>
-            <div class="promo_link"><a href="#">Shop Now</a></div>
-          </div>
-        </div>
 
-        <!-- Promo Item -->
-        <div class="col-lg-4 promo_col">
-          <div class="promo_item">
-            <div class="promo_image">
-              <img src="images/promo_3.jpg" alt="" />
-              <div class="promo_content promo_content_3">
-                <div class="promo_title">-25% off</div>
-                <div class="promo_subtitle">on Sandals</div>
-              </div>
-            </div>
-            <div class="promo_link"><a href="#">Shop Now</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- New Arrivals -->
-
-  <div class="arrivals">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="section_title_container text-center">
-            <div class="section_subtitle">only the best</div>
-            <div class="section_title">new arrivals</div>
-          </div>
-        </div>
-      </div>
-      <div class="row products_container">
-        <!-- Product -->
-        <div class="col-lg-4 product_col">
-          <div class="product">
-            <div class="product_image">
-              <img src="images/product_1.jpg" alt="" />
-            </div>
-            <div class="rating rating_4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product_content clearfix">
-              <div class="product_info">
-                <div class="product_name">
-                  <a href="product.html">Woman's Long Dress</a>
-                </div>
-                <div class="product_price">$45.00</div>
-              </div>
-              <div class="product_options">
-                <div class="product_buy product_option">
-                  <img src="images/shopping-bag-white.svg" alt="" />
-                </div>
-                <div class="product_fav product_option">+</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product -->
-        <div class="col-lg-4 product_col">
-          <div class="product">
-            <div class="product_image">
-              <img src="images/product_2.jpg" alt="" />
-            </div>
-            <div class="rating rating_4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product_content clearfix">
-              <div class="product_info">
-                <div class="product_name">
-                  <a href="product.html">2 Piece Swimsuit</a>
-                </div>
-                <div class="product_price">$35.00</div>
-              </div>
-              <div class="product_options">
-                <div class="product_buy product_option">
-                  <img src="images/shopping-bag-white.svg" alt="" />
-                </div>
-                <div class="product_fav product_option">+</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product -->
-        <div class="col-lg-4 product_col">
-          <div class="product">
-            <div class="product_image">
-              <img src="images/product_3.jpg" alt="" />
-            </div>
-            <div class="rating rating_4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product_content clearfix">
-              <div class="product_info">
-                <div class="product_name">
-                  <a href="product.html">Man Blue Jacket</a>
-                </div>
-                <div class="product_price">$145.00</div>
-              </div>
-              <div class="product_options">
-                <div class="product_buy product_option">
-                  <img src="images/shopping-bag-white.svg" alt="" />
-                </div>
-                <div class="product_fav product_option">+</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Extra -->
-
-  <div class="extra clearfix">
-    <div class="extra_promo extra_promo_1">
-      <div
-        class="extra_promo_image"
-        style="background-image: url(images/extra_1.jpg)"
-      ></div>
-      <div
-        class="extra_1_content d-flex flex-column align-items-center justify-content-center text-center"
-      >
-        <div class="extra_1_price">30%<span>off</span></div>
-        <div class="extra_1_title">On all shoes</div>
-        <div class="extra_1_text">
-          *Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu
-          tristique magna pharetra.
-        </div>
-        <div class="button extra_1_button">
-          <a href="checkout.html">check out</a>
-        </div>
-      </div>
-    </div>
-    <div class="extra_promo extra_promo_2">
-      <div
-        class="extra_promo_image"
-        style="background-image: url(images/extra_2.jpg)"
-      ></div>
-      <div
-        class="extra_2_content d-flex flex-column align-items-center justify-content-center text-center"
-      >
-        <div class="extra_2_title">
-          <div class="extra_2_center">&</div>
-          <div class="extra_2_top">Mix</div>
-          <div class="extra_2_bottom">Match</div>
-        </div>
-        <div class="extra_2_text">
-          *Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu
-          tristique magna pharetra.
-        </div>
-        <div class="button extra_2_button">
-          <a href="checkout.html">check out</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Gallery -->
-
-  <div class="gallery">
+    <!-- Overlay: Heading -->
     <div
-      class="gallery_image"
-      style="background-image: url(images/gallery.jpg)"
-    ></div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="gallery_title text-center">
-            <ul>
-              <li><a href="#">#wish</a></li>
-              <li><a href="#">#wishinstagram</a></li>
-              <li><a href="#">#wishgirl</a></li>
-            </ul>
-          </div>
-          <div class="gallery_text text-center">
-            *Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu
-            tristique magna pharetra.
-          </div>
-          <div class="button gallery_button"><a href="#">submit</a></div>
+      class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white text-center px-3"
+      style="background: rgba(0, 0, 0, 0.4)"
+    >
+      {% if hoodie.name %}
+      <div class="home_slider_content">
+        <div class="home_slider_content_inner">
+          <div class="home_slider_title">{{ hoodie.name }}</div>
         </div>
       </div>
+      {% endif %}
+
+      
     </div>
-    <div class="gallery_slider_container">
-      <!-- Gallery Slider -->
-      <div class="owl-carousel owl-theme gallery_slider">
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_1.jpg">
-            <img src="images/gallery_1.jpg" alt="" />
-          </a>
-        </div>
+  </div>
+  </a>
+  {% endif %}
 
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_2.jpg">
-            <img src="images/gallery_2.jpg" alt="" />
-          </a>
-        </div>
 
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_3.jpg">
-            <img src="images/gallery_3.jpg" alt="" />
-          </a>
-        </div>
 
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_4.jpg">
-            <img src="images/gallery_4.jpg" alt="" />
-          </a>
-        </div>
+<!-- collection3 -->
 
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_5.jpg">
-            <img src="images/gallery_5.jpg" alt="" />
-          </a>
-        </div>
-
-        <!-- Gallery Item -->
-        <div class="owl-item gallery_item">
-          <a class="colorbox" href="images/gallery_6.jpg">
-            <img src="images/gallery_6.jpg" alt="" />
-          </a>
-        </div>
-      </div>
+{% for item in collection4_items %}
+<div class="collection1-container" style="margin-top: 70px;">
+  <!-- Left Image -->
+  <div class="collection1-left">
+    <img src="{{ item.image1.url }}" alt="{{ item.name }}">
+    <div class="collection1-overlay">
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.description }}</p>
     </div>
+  </div>
+
+  <!-- Right Bigger Image -->
+  <div class="collection1-right">
+    <img src="{{ item.image2.url }}" alt="Side Image">
+  </div>
+</div>
+{% endfor %}
+
+
+
+
+
+<!-- District 11 Grid Section -->
+
+<a href="{% url 'brand' slug=district11.slug %}" class="text-decoration-none text-reset">
+
+<div style="padding: 60px 5%; box-sizing: border-box;">
+  <div class="gally-section">
+    
+    <!-- Left: Images Grid -->
+    <div class="gally-images">
+      {% for item in district_grid|slice:":6" %}
+        <div class="gally-image-wrapper">
+          <img src="{{ item.image.url }}" alt="District 11 Grid Image" />
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right: Text -->
+    <div class="gally-text">
+      <h2>
+        <span style="font-weight: 400;">New</span>
+        <span>in</span>
+        <span>DISTRICT 11</span>
+      </h2>
+    </div>
+
+  </div>
+</div>
+  </a>
+
+
+
+
+<!-- LOCATIONS -->
+<div id="storeCarousel" class="carousel slide" style="background-color: transparent; padding-bottom: 50px;">
+  <div class="carousel-inner">
+    {% for store in stores %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="store-slide d-flex flex-column flex-md-row">
+
+  <!-- LEFT: Media -->
+  <div class="store-media position-relative">
+    {% if store.image %}
+      <img src="{{ store.image.url }}" class="media-content" alt="{{ store.location }}">
+    {% elif store.video %}
+      <video class="media-content" autoplay muted loop>
+        <source src="{{ store.video.url }}" type="video/mp4">
+      </video>
+    {% endif %}
+
+    <!-- Overlay -->
+    <div class="location-overlay">{{ store.location }}</div>
+    <div class="white-fade d-none d-md-block"></div>
+      <!-- Mobile blurry fade between sections -->
+  <div class="mobile-fade d-block d-md-none"></div>
   </div>
 
 
 
-  <!-- Newsletter -->
+  <!-- RIGHT: Text -->
+  <div class="store-text">
+    <p class="subheading" style="font-family: 'Poppins', sans-serif;">EXPERIENCE</p>
+    <h1 class="mainheading" style="font-family: 'Poppins', sans-serif;">OUR SPACES</h1>
+    <h1 class="mainheading" style="font-family: 'Poppins', sans-serif;">&</h1>
+    <h1 class="mainheading" style="font-family: 'Poppins', sans-serif;">YOUR MOMENTS</h1>
+  </div>
 
-  <div class="newsletter">
-    <div class="newsletter_content">
-      <div
-        class="newsletter_image"
-        style="background-image: url(images/newsletter.jpg)"
-      ></div>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="section_title_container text-center">
-              <div class="section_subtitle">only the best</div>
-              <div class="section_title">subscribe for a 20% discount</div>
-            </div>
-          </div>
-        </div>
-        <div class="row newsletter_container">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="newsletter_form_container">
-              <form action="#">
-                <input
-                  type="email"
-                  class="newsletter_input"
-                  required="required"
-                  placeholder="E-mail here"
-                />
-                <button type="submit" class="newsletter_button">
-                  subscribe
-                </button>
-              </form>
-            </div>
-            <div class="newsletter_text">
-              Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu
-              tristique magna pharetra nec. Fusce vel lorem libero. Integer ex
-              mi, facilisis sed nisi ut, vestib ulum ultrices nulla. Aliquam
-              egestas tempor leo.
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    {% endfor %}
   </div>
+</div>
+
+
+
+
+
 
   {% endblock %}
 
