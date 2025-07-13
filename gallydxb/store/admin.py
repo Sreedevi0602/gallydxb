@@ -53,7 +53,7 @@ admin.site.register(BrandBanner, BrandBannerAdmin)
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ['name', 'logo_preview', 'image_preview']
-    readonly_fields = ['logo_preview', 'image_preview']
+    readonly_fields = ['slug', 'logo_preview', 'image_preview']
 
     def logo_preview(self, obj):
         if obj.logo:
@@ -74,7 +74,7 @@ admin.site.register(Brand, BrandAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'media_preview']
-    readonly_fields = ['media_preview']
+    readonly_fields = ['slug', 'media_preview']
 
     def media_preview(self, obj):
         if obj.image:
