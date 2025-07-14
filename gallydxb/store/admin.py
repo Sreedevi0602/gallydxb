@@ -482,3 +482,21 @@ class CollabHeroAdmin(admin.ModelAdmin):
     media_preview.short_description = "Media Preview"
 
 admin.site.register(CollabHero, CollabHeroAdmin)
+
+
+class CollabAdmin(admin.ModelAdmin):
+    list_display = ['heading1', 'media_preview']
+    readonly_fields = ['media_preview']
+
+    def media_preview(self, obj):
+        image = obj.image1
+        if image:
+            return format_html(
+                f'<img src="{image.url}" '
+                f'style="max-width: 120px; max-height: 120px; margin: 5px; border: 1px solid #ccc;" />'
+            )
+        return "No image uploaded"
+
+    media_preview.short_description = "Image Preview"
+
+admin.site.register(Collab, CollabAdmin)
