@@ -135,6 +135,49 @@
     margin-bottom: 30px;
   }
 
+  .founders-note-section {
+  background-color: #f0f0f0;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.founders-note-text {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.founders-note-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.founders-note-text p {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: #444;
+ 
+  quotes: "“" "”";
+}
+
+.founders-note-text p::before {
+  content: open-quote;
+  font-size: 2rem;
+  vertical-align: top;
+  color: #999;
+}
+
+.founders-note-text p::after {
+  content: close-quote;
+  font-size: 2rem;
+  vertical-align: bottom;
+  color: #999;
+}
+
   @media (max-width: 768px) {
     .hero h1 {
       font-size: 2.2rem;
@@ -154,4 +197,14 @@
     .vision-text {
       padding: 10px 0;
     }
+
+    .founders-note-text h2 {
+    font-size: 1.6rem;
   }
+
+  .founders-note-text p {
+    font-size: 1rem;
+    padding: 0;
+  }
+}
+  
