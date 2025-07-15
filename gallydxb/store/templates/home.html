@@ -4,8 +4,9 @@
 
 
   <!-- Home Slider -->
-   <a href="{% url 'products' %}" class="text-decoration-none text-reset">
+   
   <div class="home_slider_container">
+    <a href="{% url 'products' %}" class="text-decoration-none text-reset">
     <div class="owl-carousel owl-theme home_slider">
       {% for hero in hero_slides %}
       <div class="owl-item">
@@ -35,6 +36,7 @@
       </div>
       {% endfor %}
     </div>
+    </a>
 
     <!-- Home Slider Nav -->
     <div
@@ -43,7 +45,7 @@
       <img src="{% static 'images/arrow_r.png' %}" alt="" />
     </div>
   </div>
-</a>
+
 
   <!-- Brand Banner -->
 

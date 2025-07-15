@@ -8,19 +8,48 @@
         <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo" class="gally-header">
       </a>
     </div>
+    
     <nav class="main_nav">
-      <ul>
-        <li><a href="{% url 'home' %}">HOME</a></li>
-        <li><a href="{% url 'about' %}">ABOUT</a></li>
-        <li><a href="#">BRANDS</a></li>
-        <li><a href="{% url 'products' %}">PRODUCTS</a></li>
-        <li><a href="{% url 'collab' %}">COLLAB.</a></li>
-        <li><a href="{% url 'store' %}">STORE</a></li>
-        <li><a href="{% url 'contact' %}">GET IN TOUCH</a></li>
+      <ul class="navbar-nav d-flex flex-row gap-3 align-items-center">
+
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+
+        <!-- BRANDS DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="brandsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            BRANDS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="brandsDropdown">
+            {% for brand in brands %}
+              <li><a class="dropdown-item" href="{% url 'brand' brand.slug %}">{{ brand.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <!-- PRODUCTS DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PRODUCTS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+            <li><a class="dropdown-item" href="{% url 'products' %}">ALL PRODUCTS</a></li>
+            <li><hr class="dropdown-divider"></li>
+            {% for category in categories %}
+              <li><a class="dropdown-item" href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="{% url 'collab' %}">COLLAB.</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'store' %}">STORE</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">GET IN TOUCH</a></li>
+
       </ul>
     </nav>
   </div>
 </header>
+
 
 <!-- Mobile Header -->
 <div class="mobile_header d-flex justify-content-between align-items-center">
