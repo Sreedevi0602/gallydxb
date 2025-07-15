@@ -4,6 +4,7 @@
 
 
   <!-- Home Slider -->
+   <a href="{% url 'products' %}" class="text-decoration-none text-reset">
   <div class="home_slider_container">
     <div class="owl-carousel owl-theme home_slider">
       {% for hero in hero_slides %}
@@ -42,6 +43,7 @@
       <img src="{% static 'images/arrow_r.png' %}" alt="" />
     </div>
   </div>
+</a>
 
   <!-- Brand Banner -->
 
@@ -146,7 +148,7 @@
 
 
   <!-- Updates Slider1 -->
-   
+  <a href="{% url 'products' %}" class="text-decoration-none text-reset">
 	 <div class="home_slider_container">
     <div class="owl-carousel owl-theme home_slider">
       {% for update_slide in update_slides %}
@@ -177,7 +179,8 @@
       </div>
       {% endfor %}
     </div>
-
+   </div>
+  </a>
 
 
 
@@ -215,6 +218,7 @@
 <!-- collection1 -->
 
 {% for item in collection1_items %}
+<a href="{% url 'products' %}" class="text-decoration-none text-reset">
 <div class="collection1-container">
   <!-- Left Image -->
   <div class="collection1-left">
@@ -230,6 +234,7 @@
     <img src="{{ item.image2.url }}" alt="Side Image">
   </div>
 </div>
+</a>
 {% endfor %}
 
 
@@ -283,7 +288,7 @@
 
 
 <!-- Updates Slider2 -->
-   
+   <a href="{% url 'products' %}" class="text-decoration-none text-reset">
 	 <div class="home_slider_container">
     <div class="owl-carousel owl-theme home_slider">
       {% for update_slide in update2_slides %}
@@ -314,6 +319,8 @@
       </div>
       {% endfor %}
     </div>
+   </div>
+   </a>
 
 
 
@@ -348,6 +355,7 @@
 <!-- collection2 -->
 
 {% for item in collection2_items %}
+<a href="{% url 'products' %}" class="text-decoration-none text-reset">
 <div class="collection1-container">
   <!-- Left Image -->
   <div class="collection1-left">
@@ -363,6 +371,7 @@
     <img src="{{ item.image2.url }}" alt="Side Image">
   </div>
 </div>
+</a>
 {% endfor %}
 
 
@@ -444,7 +453,7 @@
 
 
 <!-- Updates Slider3 -->
-   
+  <a href="{% url 'products' %}" class="text-decoration-none text-reset">
 	 <div class="home_slider_container">
     <div class="owl-carousel owl-theme home_slider">
       {% for update_slide in update3_slides %}
@@ -475,12 +484,15 @@
       </div>
       {% endfor %}
     </div>
+   </div>
+  </a>
 
 
 
   <!-- collection3 -->
 
 {% for item in collection3_items %}
+<a href="{% url 'products' %}" class="text-decoration-none text-reset">
 <div class="collection1-container" style="margin-top: 70px;">
   <!-- Left Image -->
   <div class="collection1-left">
@@ -496,6 +508,7 @@
     <img src="{{ item.image2.url }}" alt="Side Image">
   </div>
 </div>
+</a>
 {% endfor %}
     
 
@@ -581,6 +594,7 @@
 <!-- collection3 -->
 
 {% for item in collection4_items %}
+<a href="{% url 'products' %}" class="text-decoration-none text-reset">
 <div class="collection1-container" style="margin-top: 70px;">
   <!-- Left Image -->
   <div class="collection1-left">
@@ -596,6 +610,7 @@
     <img src="{{ item.image2.url }}" alt="Side Image">
   </div>
 </div>
+</a>
 {% endfor %}
 
 
