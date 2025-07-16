@@ -133,6 +133,15 @@
   overflow: hidden;
 }
 
+.menu {
+  display: none !important;
+}
+
+.menu.active {
+  display: flex !important;
+}
+
+
 @media (max-width: 991px) {
   .mobile_header.header-scrolled {
    padding: 5px 15px;
@@ -251,8 +260,14 @@
 
 
 
+
+
+
+
+
 /* Menu background styling */
 .menu {
+  
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
