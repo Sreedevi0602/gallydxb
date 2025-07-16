@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, get_object_or_404
 from .models import *
 
@@ -124,7 +125,34 @@ def contact(request):
 
 def collab(request):
     hero_slides = CollabHero.objects.all()
-    return render(request, 'collab.html', {'hero_slides': hero_slides})
+    collab_instances = Collab.objects.all()
+
+    scroll_classes = [
+        'slower', 'faster', 'vertical', 'slower1', 'faster1',
+        'slower2', 'slower-down', 'fastest', 'last', ''
+    ]
+
+    all_collabs = []
+
+    for collab in collab_instances:
+        image_fields = [f'image{i}' for i in range(1, 11)]
+        images = [getattr(collab, field) for field in image_fields if getattr(collab, field)]
+
+        random.shuffle(scroll_classes)
+        image_class_pairs = list(zip(images, scroll_classes[:len(images)]))
+
+        all_collabs.append({
+            'heading1': collab.heading1,
+            'description1': collab.description1,
+            'images': image_class_pairs
+        })
+
+    return render(request, 'collab.html', {
+        'hero_slides': hero_slides,
+        'all_collabs': all_collabs
+    })
+
+
 
 
 

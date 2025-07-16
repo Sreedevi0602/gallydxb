@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.forms import ValidationError
 from .utils.validators import validate_video_file_extension
@@ -442,6 +443,31 @@ class CollabHero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+
+
+class Collab(models.Model):
+    heading1 = models.CharField(max_length=200, null=True, blank=True)
+    description1 = models.TextField(max_length=1000, null=True, blank=True)
+
+    image1 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image4 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image5 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image6 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image7 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image8 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image9 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+    image10 = models.ImageField(upload_to='uploads/collab/', null=True, blank=True)
+
+    def images(self):
+        """Return a list of uploaded image fields (non-empty only)."""
+        return [getattr(self, f'image{i}') for i in range(1, 11) if getattr(self, f'image{i}')]
+
+    def __str__(self):
+        return self.heading1 or "Untitled Collaboration"
+
+
 
 
 

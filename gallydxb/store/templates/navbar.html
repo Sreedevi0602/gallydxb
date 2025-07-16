@@ -5,7 +5,7 @@
   <div class="header_inner d-flex flex-row align-items-center justify-content-between">
     <div class="logo">
       <a href="{% url 'home' %}">
-        <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo">
+        <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo" class="gally-header">
       </a>
     </div>
     <nav class="main_nav">
@@ -41,7 +41,7 @@
     
     <div class="logo">
       <a href="{% url 'home' %}">
-        <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo">
+        <img src="{% static 'images/gally_logo.png' %}" alt="Gally Logo" class="gally-menu">
       </a>
     </div>
     <nav class="menu_nav">
@@ -204,11 +204,15 @@
   top: 60px !important;
 }
 
+.menu_nav ul li {
+  margin-bottom: 20px; 
+}
 
 /* Menu text color */
 .menu_nav ul li a {
   color: white !important;
   font-size: 25px;
+
 }
 
 /* Close button styling */
