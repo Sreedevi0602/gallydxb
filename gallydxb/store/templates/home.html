@@ -81,7 +81,7 @@
       {% if brand_banner.heading1 %}
       <div class="home_slider_content"> 
         <div class="home_slider_content_inner">
-          <div class="home_slider_title">{{ brand_banner.heading1 }}</div>
+          <div class="home_slider_title" style="margin-top: -5rem;">{{ brand_banner.heading1 }}</div>
         </div>
       </div>
       {% endif %}
@@ -91,7 +91,11 @@
     {% if brand.logo and brand.slug %}
       <a href="{% url 'brand' slug=brand.slug %}" class="brand-logo-wrapper text-decoration-none" style="display: inline-block; max-width: 140px;">
         <img src="{{ brand.logo.url }}" alt="{{ brand.name }}"
-             class="img-fluid w-100 h-auto object-fit-contain" style="max-height: 80px;" />
+             class="img-fluid w-100 h-auto object-fit-contain" style="max-height: 80px; 
+             border: 2px solid #f5f5f5;
+              border-radius: 8px;          
+              padding: 4px;                
+              background-color: white;" />
       </a>
     {% endif %}
   {% endfor %}
