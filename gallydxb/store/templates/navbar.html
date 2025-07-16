@@ -77,8 +77,39 @@
       <ul class="menu_mm">
         <li><a href="{% url 'home' %}">HOME</a></li>
         <li><a href="{% url 'about' %}">ABOUT</a></li>
-        <li><a href="#">BRANDS</a></li>
-        <li><a href="{% url 'products' %}">PRODUCTS</a></li>
+
+
+        <!-- BRANDS Dropdown -->
+<li class="mobile-dropdown">
+  <span class="mobile-dropdown-toggle">
+    BRANDS
+    <i class="bi bi-caret-right-fill dropdown-arrow"></i>
+  </span>
+  <ul class="mobile-submenu">
+    {% for brand in brands %}
+      <li><a href="{% url 'brand' brand.slug %}" style="font-size: 20px; font-weight: 50;">{{ brand.name }}</a></li>
+    {% endfor %}
+  </ul>
+</li>
+
+        
+<!-- PRODUCTS Dropdown -->
+<li class="mobile-dropdown">
+  <span class="mobile-dropdown-toggle">
+    PRODUCTS
+    <i class="bi bi-caret-right-fill dropdown-arrow"></i>
+  </span>
+  <ul class="mobile-submenu">
+    <li><a href="{% url 'products' %}" style="font-size: 20px; font-weight: 50;">ALL PRODUCTS</a></li>
+    {% for category in categories %}
+      <li><a href="{% url 'category' category.slug %}" style="font-size: 20px; font-weight: 50;">{{ category.name }}</a></li>
+    {% endfor %}
+  </ul>
+</li>    
+        
+
+
+
         <li><a href="{% url 'collab' %}">COLLAB.</a></li>
         <li><a href="{% url 'store' %}">STORE</a></li>
         <li><a href="{% url 'contact' %}">GET IN TOUCH</a></li>
@@ -227,6 +258,11 @@
   -webkit-backdrop-filter: blur(20px);
   top: 0;
   transition: top 0.3s ease;
+
+  max-height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  width: 100%;
 }
 
 .menu.menu-scrolled {
@@ -264,6 +300,73 @@ body.menu-open {
 }
 
 
+/* Mobile Dropdown Styling */
+.mobile-dropdown > .mobile-dropdown-toggle {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  letter-spacing: 5px;
+}
+
+.mobile-submenu {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.mobile-submenu li a {
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+}
+
+.mobile-dropdown.open > .mobile-submenu {
+  display: block;
+}
+
+.menu_nav ul li a,
+.mobile-dropdown > .mobile-dropdown-toggle {
+  font-weight: bold;
+}
+
+/* Remove bold from submenu items */
+.mobile-submenu li a {
+  font-weight: 100;
+}
+
+
+.mobile-dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+}
+
+.dropdown-arrow {
+  margin-left: 10px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-submenu {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.mobile-dropdown.open > .mobile-submenu {
+  display: block;
+}
+
+.mobile-submenu li a {
+  font-weight: 100;
+}
+
+
 
 </style>
 
@@ -286,5 +389,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const burgerContainer = document.querySelector('.burger_container');
     burgerContainer.style.display = 'flex';
   });
+
+
+
+   document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const parent = this.closest('.mobile-dropdown');
+    parent.classList.toggle('open');
+
+    const arrowIcon = this.querySelector('.dropdown-arrow');
+    if (parent.classList.contains('open')) {
+      arrowIcon.classList.remove('bi-caret-right-fill');
+      arrowIcon.classList.add('bi-caret-down-fill');
+    } else {
+      arrowIcon.classList.remove('bi-caret-down-fill');
+      arrowIcon.classList.add('bi-caret-right-fill');
+    }
+  });
+});
+
+
 });
 </script>
