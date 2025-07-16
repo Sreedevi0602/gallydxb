@@ -22,6 +22,10 @@ class Hero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+    class Meta:
+        verbose_name = "Hero Banner (Home Page)"
+        verbose_name_plural = "Hero Banners (Home Page)"
 
 
 class BrandBanner(models.Model):
@@ -45,10 +49,16 @@ class BrandBanner(models.Model):
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
 
-    def save(self, *args, **kwargs):
+    
+
+    def clean(self):
         if not self.pk and BrandBanner.objects.exists():
-            raise ValidationError("Only one BrandBanner instance is allowed. Please delete the existing one to add a new one.")
-        super().save(*args, **kwargs)
+            raise ValidationError("Only one Collection instance is allowed.")
+        super().clean()
+
+    class Meta:
+        verbose_name = "Our Brands Display - Background Banner (Home Page)"
+        verbose_name_plural = "Our Brands Display - Background Banner (Home Page)"
 
 
 class Brand(models.Model):
@@ -65,6 +75,10 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Our Brands (Add Your Brands Here)"
+        verbose_name_plural = "Our Brands (Add Your Brands Here)"
     
 
 
@@ -93,6 +107,10 @@ class Category(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+    class Meta:
+        verbose_name = "Category (Add Categories Here)"
+        verbose_name_plural = "Categories (Add Categories Here)"
 
 
 class Collections(models.Model):
@@ -107,6 +125,10 @@ class Collections(models.Model):
         super().clean()
         if not self.image1 :
             raise ValidationError("Please upload either an image.")
+        
+    class Meta:
+        verbose_name = "Collection (Add Your Collections Here)"
+        verbose_name_plural = "Collections (Add Your Collections Here)"
     
 
 
@@ -127,6 +149,11 @@ class UpdateBanner1(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+    
+    class Meta:
+        verbose_name = "Offers/Updates-1 (Add Any Offers/Updates to display on home screen - layer 1)"
+        verbose_name_plural = "Offers/Updates-1 (Add Any Offers/Updates to display on home screen - layer 1)"
 
 
 class Product(models.Model):
@@ -138,6 +165,11 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.code} - {self.name}"
+    
+
+    class Meta:
+        verbose_name = "Products (Add Your Products Here)"
+        verbose_name_plural = "Products (Add Your Products Here)"
 
 
 
@@ -171,6 +203,11 @@ class GallyGrid(models.Model):
         return "New in Gally"
     
 
+    class Meta:
+        verbose_name = "**New in Gally : Home Page (Add up to 6 Images of Products in Gally Here)"
+        verbose_name_plural = "**New in Gally : Home Page (Add up to 6 Images of Products in Gally Here)"
+    
+
 class Collection1(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
@@ -184,6 +221,11 @@ class Collection1(models.Model):
 
     def __str__(self):
         return f"{self.name} Collection" 
+    
+
+    class Meta:
+        verbose_name = "Collection Layer 1 : Home Screen (Add a Collection Here)"
+        verbose_name_plural = "Collection Layer 1 : Home Screen (Add a Collection Here)"
     
 
 class UpdateBanner2(models.Model):
@@ -204,6 +246,11 @@ class UpdateBanner2(models.Model):
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
         
+    
+    class Meta:
+        verbose_name = "Offers/Updates-2 (Add Any Offers/Updates to display on home screen - layer 2)"
+        verbose_name_plural = "Offers/Updates-2 (Add Any Offers/Updates to display on home screen - layer 2)"
+        
 
 class LoopyGrid(models.Model):
     image = models.ImageField(upload_to='uploads/loopy/images/', blank=True, null=True)
@@ -221,6 +268,12 @@ class LoopyGrid(models.Model):
         return "New in Loopy"
     
 
+    class Meta:
+        verbose_name = "**New in Loopy : Home Page (Add up to 6 Images of Products in Loopy Here)"
+        verbose_name_plural = "**New in Loopy : Home Page (Add up to 6 Images of Products in Loopy Here)"
+    
+    
+
 class Collection2(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
@@ -234,6 +287,11 @@ class Collection2(models.Model):
 
     def __str__(self):
         return f"{self.name} Collection" 
+    
+
+    class Meta:
+        verbose_name = "Collection Layer 2 : Home Screen (Add a Collection Here)"
+        verbose_name_plural = "Collection Layer 2 : Home Screen (Add a Collection Here)"
     
 
 class UpdateBanner3(models.Model):
@@ -255,6 +313,11 @@ class UpdateBanner3(models.Model):
             raise ValidationError("Upload either an image or a video, not both.")
         
 
+    class Meta:
+        verbose_name = "Offers/Updates-3 (Add Any Offers/Updates to display on home screen - layer 3)"
+        verbose_name_plural = "Offers/Updates-3 (Add Any Offers/Updates to display on home screen - layer 3)"
+        
+
 class IrishclubGrid(models.Model):
     image = models.ImageField(upload_to='uploads/irishclub/images/', blank=True, null=True)
 
@@ -269,6 +332,11 @@ class IrishclubGrid(models.Model):
 
     def __str__(self):
         return "New in Irish Club"
+    
+
+    class Meta:
+        verbose_name = "**New in Irish Club : Home Page (Add up to 6 Images of Products in Irish Club Here)"
+        verbose_name_plural = "**New in Irish Club : Home Page (Add up to 6 Images of Products in Irish Club Here)"
     
 
 
@@ -287,6 +355,11 @@ class Collection3(models.Model):
         return f"{self.name} Collection" 
     
 
+    class Meta:
+        verbose_name = "Collection Layer 3 : Home Screen (Add a Collection Here)"
+        verbose_name_plural = "Collection Layer 3 : Home Screen (Add a Collection Here)"
+    
+
 class JackmillerGrid(models.Model):
     image = models.ImageField(upload_to='uploads/jackmiller/images/', blank=True, null=True)
 
@@ -301,6 +374,11 @@ class JackmillerGrid(models.Model):
 
     def __str__(self):
         return "New in Jack Miller"
+    
+
+    class Meta:
+        verbose_name = "**New in Jack Miller : Home Page (Add up to 6 Images of Products in Jack Miller Here)"
+        verbose_name_plural = "**New in Jack Miller : Home Page (Add up to 6 Images of Products in Jack Miller Here)"
     
 
 class AboutHero(models.Model):
@@ -319,6 +397,11 @@ class AboutHero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+
+    class Meta:
+        verbose_name = "**About Us - Hero Image (About Us Page)"
+        verbose_name_plural = "**About Us - Hero Image (About Us Page)"
         
 
 
@@ -340,6 +423,11 @@ class ContactHero(models.Model):
             raise ValidationError("Upload either an image or a video, not both.")
         
 
+    class Meta:
+        verbose_name = "**Contact Us - Hero Image (Contact Us Page)"
+        verbose_name_plural = "**Contact Us - Hero Image (Contact Us Page)"
+        
+
 class ProductHero(models.Model):
     heading1 = models.CharField(max_length=100, null=True, blank=True)
 
@@ -358,6 +446,11 @@ class ProductHero(models.Model):
             raise ValidationError("Upload either an image or a video, not both.")
         
 
+    class Meta:
+        verbose_name = "**Products - Hero Image (Products Page)"
+        verbose_name_plural = "**Products - Hero Image (Products Page)"
+        
+
 class Collection4(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
@@ -371,6 +464,11 @@ class Collection4(models.Model):
 
     def __str__(self):
         return f"{self.name} Collection" 
+    
+
+    class Meta:
+        verbose_name = "Collection Layer 4 : Home Screen (Add a Collection Here)"
+        verbose_name_plural = "Collection Layer 4 : Home Screen (Add a Collection Here)"
         
 
 class DistrictGrid(models.Model):
@@ -389,6 +487,11 @@ class DistrictGrid(models.Model):
         return "New in District 11"
     
 
+    class Meta:
+        verbose_name = "**New in District 11 : Home Page (Add up to 6 Images of Products in District 11 Here)"
+        verbose_name_plural = "**New in District 11 : Home Page (Add up to 6 Images of Products in District 11 Here)"
+    
+
 
 class Store(models.Model):
     location = models.CharField(max_length=100, null=True, blank=True)
@@ -405,6 +508,10 @@ class Store(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+    class Meta:
+        verbose_name = "Store Locations : Home Screen (Add Your Store Details)"
+        verbose_name_plural = "Store Locations : Home Screen (Add Your Store Details)"
     
 
 
@@ -426,6 +533,11 @@ class StoreHero(models.Model):
             raise ValidationError("Upload either an image or a video, not both.")
         
 
+    class Meta:
+        verbose_name = "**Our Stores - Hero Image (Our Stores Page)"
+        verbose_name_plural = "**Our Stores - Hero Image (Our Stores Page)"
+        
+
 
 class CollabHero(models.Model):
     heading1 = models.CharField(max_length=100, null=True, blank=True)
@@ -443,6 +555,11 @@ class CollabHero(models.Model):
             raise ValidationError("Please upload either an image or a video.")
         if self.image and self.video:
             raise ValidationError("Upload either an image or a video, not both.")
+        
+
+    class Meta:
+        verbose_name = "**Collaborations - Hero Image (Collaborations Page)"
+        verbose_name_plural = "**Collaborations - Hero Image (Collaborations Page)"
 
 
 class Collab(models.Model):
@@ -466,6 +583,11 @@ class Collab(models.Model):
 
     def __str__(self):
         return self.heading1 or "Untitled Collaboration"
+    
+
+    class Meta:
+        verbose_name = "Collaborations Media (Add up to 10 images for each collaboration)"
+        verbose_name_plural = "Collaborations Media (Add up to 10 images for each collaboration)"
 
 
 
