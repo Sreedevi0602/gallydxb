@@ -985,8 +985,8 @@ section
 
 .home_slider_content {
 	position: absolute;
-	top: 40%; /* Lowered slightly for better positioning */
-	left: 60px; /* Align to the left side with spacing */
+	top: 56.3%; /* Lowered slightly for better positioning */
+	left: 50px; /* Align to the left side with spacing */
 	transform: none; /* Removed centering transform */
 	z-index: 10;
 	text-align: left;
