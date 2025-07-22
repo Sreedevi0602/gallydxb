@@ -161,6 +161,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    made = models.CharField(max_length=150, null=True, blank=True)
     collection = models.ForeignKey(Collections, on_delete=models.CASCADE)
 
     def __str__(self):

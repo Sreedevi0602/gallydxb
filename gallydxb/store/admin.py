@@ -130,7 +130,7 @@ class ProductMediaInline(admin.StackedInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['code', 'name', 'brand', 'category', 'product_media_preview']
+    list_display = ['code', 'name', 'brand', 'category', 'made', 'collection', 'product_media_preview']
     inlines = [ProductMediaInline]
     readonly_fields = ['product_media_preview']
 
